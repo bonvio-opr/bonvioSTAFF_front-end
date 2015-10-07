@@ -1,0 +1,116 @@
+[
+  {
+    "name": "DebianSRV (134)",
+    "ip": "192.168.50.134",
+    "services": [
+      {
+        "title": "Tomcat",
+        "port": "80",
+        "url": {
+          "title": "http://192.168.50.134/",
+          "link": "http://192.168.50.134/"
+        },
+        "login": "admin",
+        "password": "y3l0l3k0r",
+        "sources": [
+          {
+            "title": "tomcat (server manager)",
+            "url": "http://192.168.50.134/manager",
+            "login": "admin",
+            "password": "y3l0l3k0r"
+          },
+          {
+            "title": "bonvio.net (site)",
+            "url": "http://bonvio.net/",
+            "login": "-",
+            "password": "-"
+          },
+          {
+            "title": "webapps.bonvio.net",
+            "url": "http://webapps.bonvio.net/",
+            "login": "admin",
+            "password": "y3l0l3k0r"
+          },
+          {
+            "title": "webapps.bonvio.net/Project401",
+            "url": "http://webapps.bonvio.net/Project401/",
+            "login": "-",
+            "password": "-"
+          }
+        ]
+      },
+      {
+        "title": "Bind9 (DNS-Server)",
+        "port": "-",
+        "url": {
+          "title": "-",
+          "link": "#"
+        },
+        "login": "-",
+        "password": "-",
+        "sources": [
+          {
+            "title": "staff.bonvio.com (staff.local)",
+            "url": "http://staff.bonvio.com",
+            "login": "-",
+            "password": "-"
+          },
+          {
+            "title": "pma.bonvio.com (pma.local)",
+            "url": "http://pma.bonvio.com/",
+            "login": "-",
+            "password": "-"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "DebianSRV (78)",
+    "ip": "192.168.50.78",
+    "services": [
+      {
+        "title": "GitLab",
+        "port": "80",
+        "url": {
+          "title": "gitlab.bonvio.com (gitlab.local)",
+          "link": "http://192.168.50.178/"
+        },
+        "login": "root",
+        "password": "y3l0l3k0r",
+        "sources": [
+        ]
+      }
+    ]
+  },
+  {
+    "name": "DebianSRV (79)",
+    "ip": "192.168.50.79",
+    "services": [
+      {
+        "title": "Apache",
+        "port": "80",
+        "url": {
+          "title": "192.168.50.79",
+          "link": "http://192.168.50.79/"
+        },
+        "login": "-",
+        "password": "-",
+        "sources": [
+        ]
+      },
+      {
+        "title": "MySQL",
+        "port": "3306",
+        "url": {
+          "title": "pma.bonvio.com (pma.local)",
+          "link": "http://192.168.50.79/pma/"
+        },
+        "login": "root",
+        "password": "y3l0l3k0r",
+        "sources": [
+        ]
+      }
+    ]
+  }
+]
