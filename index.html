@@ -9,29 +9,37 @@
     <link rel="shortcut icon" href="vendor/img/favicon.gif" type="image/x-icon">
     <!-- Bootstrap -->
     <link href="vendor/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-
+    <!--FontAwesome-->
+    <link href="vendor/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <style>
+        body {
+            margin-top: 50px;
+        }
+    </style>
 </head>
 <body>
-<nav class="navbar navbar-default">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="#">
-                <img alt="Brand" src="vendor/img/favicon.gif">
-            </a>
-        </div>
-        <h2 class="navbar-text navbar-right">STAFF.bonvio.com</h2>
-    </div>
 
-</nav>
-<hr>
 <div class="container">
-    <table class="table table-hover table-responsive" data-ng-controller="ServersController">
+
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">
+                    <!--<img alt="Brand" src="vendor/img/favicon.gif">-->
+                    STAFF.bonvio.com
+                </a>
+            </div>
+            <!--<img class="navbar-text navbar-right" alt="Brand" src="vendor/img/favicon.gif">-->
+        </div>
+    </nav>
+
+    <table class="table table-responsive" data-ng-controller="ServersController">
         <tr>
             <th>Server name</th>
             <th>Server IP</th>
@@ -41,35 +49,47 @@
             <td>{{server.name}}</td>
             <td>{{server.ip}}</td>
             <td>
-                <ul data-ng-repeat="service in server.services">
-                    <li>
-                        {{service.title}}
-                        (<a target="_blank" data-ng-href="{{service.url.link}}">{{service.url.title}}</a>)
-                        ({{service.login}};{{service.password}})
-                        <ul data-ng-repeat="source in service.sources">
-                            <li>{{source.title}} (<a target="_blank" data-ng-href="{{source.url}}">{{source.url}}</a>)
-                                ({{source.login}};{{source.password}})
-                            </li>
-                        </ul>
-                    </li>
-                    <!--<li>
-                        <h4>{{service.title}}</h4>
-                        <p>Port: {{service.port}}</p>
-                        <p>URL: <a data-ng-href="{{service.url.link}}">{{service.url.link}}</a></p>
-                        <p>Login: {{service.login}}</p>
-                        <p>Password: {{service.password}}</p>
-                        <p>Sources:
-                        <ul data-ng-repeat="source in service.sources">
-                            <li>
-                                <h4>{{source.title}}</h4>
-                                <p>URL: {{source.url}}</p>
-                                <p>Login: {{source.login}}</p>
-                                <p>Password: {{source.password}}</p>
-                            </li>
-                        </ul>
-                        </p>
-                    </li>-->
-                </ul>
+                <div data-ng-repeat="service in server.services">
+
+                        <h4>{{service.title}} <span data-ng-show="service.port">(Port: {{service.port}})</span>
+                            <small ng-show="service.url.title">URL: {{service.url.title}}
+                            <a target="_blank" ng-show="service.url.link" data-ng-href="{{service.url.link}}"><i
+                                    class="fa fa-link"></i></a>
+                            </small>
+
+                            <ul ng-show="service.login || service.password">
+                                <li><small>Login:
+                                    {{service.login}}</small>
+                                </li>
+                                <li><small>Password:
+                                    {{service.password}}</small>
+                                </li>
+                            </ul>
+                        </h4>
+
+                        <div ng-show="service.sources" class="panel panel-default">
+                            <!-- Default panel contents -->
+                            <div class="panel-heading">Sources:</div>
+
+                            <!-- Table -->
+                            <table class="table">
+                                <tr>
+                                    <th><small>TITLE</small></th>
+                                    <th><small>URL</small></th>
+                                    <th><small>LOGIN</small></th>
+                                    <th><small>PASSWORD</small></th>
+                                </tr>
+                                <tr data-ng-repeat="source in service.sources">
+                                    <td><small ng-show="source.title">{{source.title}}</small></td>
+                                    <td><small ng-show="source.url">{{source.url}}</small> <a target="_blank" data-ng-href="{{source.url}}"><i
+                                            class="fa fa-link"></i></a></td>
+                                    <td><small ng-show="source.login">{{source.login}}</small></td>
+                                    <td><small ng-show="source.password">{{source.password}}</small></td>
+                                </tr>
+                            </table>
+                        </div>
+
+                </div>
             </td>
         </tr>
     </table>
@@ -81,6 +101,8 @@
 <!-- Include all compiled plugins (below), or include individual files as needed
 <script src="vendor/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>-->
 <script src="vendor/bower_components/angular/angular.min.js"></script>
+<script src="vendor/bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
+<script src="vendor/bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
 <script src="vendor/scripts/main.js"></script>
 </body>
 </html>

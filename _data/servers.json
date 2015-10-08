@@ -1,8 +1,41 @@
 [
   {
-    "name": "DebianSRV (134)",
+    "name": "PC5 (Hard)",
+    "ip": "192.168.50.5",
+    "services": [
+      {
+        "title": "Tomcat",
+        "port": "8080",
+        "url": {
+          "title": "192.168.50.5",
+          "link": "http://192.168.50.5/"
+        },
+        "login": "admin",
+        "password": "123Password",
+        "sources": [
+          {
+            "title": "order",
+            "url": "http://192.168.50.5:8080/order",
+            "login": "tv",
+            "password": "tv"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "DebianSRV (Virtual)",
     "ip": "192.168.50.134",
     "services": [
+      {
+        "title": "SSH",
+        "port": "22",
+        "url": {
+          "title": "ssh://user:123@192.168.50.134/"
+        },
+        "login": "user",
+        "password": "123"
+      },
       {
         "title": "Tomcat",
         "port": "80",
@@ -14,16 +47,8 @@
         "password": "y3l0l3k0r",
         "sources": [
           {
-            "title": "tomcat (server manager)",
-            "url": "http://192.168.50.134/manager",
-            "login": "admin",
-            "password": "y3l0l3k0r"
-          },
-          {
             "title": "bonvio.net (site)",
-            "url": "http://bonvio.net/",
-            "login": "-",
-            "password": "-"
+            "url": "http://bonvio.net/"
           },
           {
             "title": "webapps.bonvio.net",
@@ -33,71 +58,70 @@
           },
           {
             "title": "webapps.bonvio.net/Project401",
-            "url": "http://webapps.bonvio.net/Project401/",
-            "login": "-",
-            "password": "-"
+            "url": "http://webapps.bonvio.net/Project401/"
           }
         ]
       },
       {
-        "title": "Bind9 (DNS-Server)",
-        "port": "-",
-        "url": {
-          "title": "-",
-          "link": "#"
-        },
-        "login": "-",
-        "password": "-",
+        "title": "Bind9 (Virtual)",
         "sources": [
           {
             "title": "staff.bonvio.com (staff.local)",
-            "url": "http://staff.bonvio.com",
-            "login": "-",
-            "password": "-"
+            "url": "http://staff.bonvio.com"
           },
           {
             "title": "pma.bonvio.com (pma.local)",
-            "url": "http://pma.bonvio.com/",
-            "login": "-",
-            "password": "-"
+            "url": "http://pma.bonvio.com/"
           }
         ]
       }
     ]
   },
   {
-    "name": "DebianSRV (78)",
+    "name": "DebianSRV (Virtual)",
     "ip": "192.168.50.78",
     "services": [
+      {
+        "title": "SSH",
+        "port": "22",
+        "url": {
+          "title": "ssh://user:123@192.168.50.78/"
+        },
+        "login": "user",
+        "password": "123"
+      },
       {
         "title": "GitLab",
         "port": "80",
         "url": {
           "title": "gitlab.bonvio.com (gitlab.local)",
-          "link": "http://192.168.50.178/"
+          "link": "http://192.168.50.78/"
         },
         "login": "root",
-        "password": "y3l0l3k0r",
-        "sources": [
-        ]
+        "password": "y3l0l3k0r"
       }
     ]
   },
   {
-    "name": "DebianSRV (79)",
+    "name": "DebianSRV (Virtual)",
     "ip": "192.168.50.79",
     "services": [
+      {
+        "title": "SSH",
+        "port": "22",
+        "url": {
+          "title": "ssh://user:123@192.168.50.79/"
+        },
+        "login": "user",
+        "password": "123"
+      },
       {
         "title": "Apache",
         "port": "80",
         "url": {
           "title": "192.168.50.79",
           "link": "http://192.168.50.79/"
-        },
-        "login": "-",
-        "password": "-",
-        "sources": [
-        ]
+        }
       },
       {
         "title": "MySQL",
@@ -107,9 +131,7 @@
           "link": "http://192.168.50.79/pma/"
         },
         "login": "root",
-        "password": "y3l0l3k0r",
-        "sources": [
-        ]
+        "password": "y3l0l3k0r"
       }
     ]
   }
