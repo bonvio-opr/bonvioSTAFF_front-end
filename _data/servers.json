@@ -24,43 +24,17 @@
     ]
   },
   {
-    "name": "DebianSRV (Virtual)",
-    "ip": "192.168.50.134",
+    "name": "log1Srv (Virtual)",
+    "ip": "192.168.50.95",
     "services": [
       {
         "title": "SSH",
         "port": "22",
         "url": {
-          "title": "ssh://user:123@192.168.50.134/"
+          "title": "ssh://kesha@192.168.50.95/"
         },
-        "login": "user",
-        "password": "123"
-      },
-      {
-        "title": "Tomcat",
-        "port": "80",
-        "url": {
-          "title": "http://192.168.50.134/",
-          "link": "http://192.168.50.134/"
-        },
-        "login": "admin",
-        "password": "y3l0l3k0r",
-        "sources": [
-          {
-            "title": "bonvio.net (site)",
-            "url": "http://bonvio.net/"
-          },
-          {
-            "title": "webapps.bonvio.net",
-            "url": "http://webapps.bonvio.net/",
-            "login": "admin",
-            "password": "y3l0l3k0r"
-          },
-          {
-            "title": "webapps.bonvio.net/Project401",
-            "url": "http://webapps.bonvio.net/Project401/"
-          }
-        ]
+        "login": "kesha",
+        "password": "A-nd****S"
       },
       {
         "title": "Bind9 (Virtual)",
@@ -72,66 +46,144 @@
           {
             "title": "pma.bonvio.com (pma.local)",
             "url": "http://pma.bonvio.com/"
+          },
+          {
+            "title": "gitlab.bonvio.com (gitlab.local)",
+            "url": "http://gitlab.bonvio.com/"
+          },
+          {
+            "title": "tomcat.bonvio.com (tomcat.local)",
+            "url": "http://tomcat.bonvio.com/"
+          },
+          {
+            "title": "tost.bonvio.com (tost.local)",
+            "url": "http://tost.bonvio.com/"
           }
         ]
       }
     ]
   },
   {
-    "name": "DebianSRV (Virtual)",
-    "ip": "192.168.50.78",
+    "name": "log2Srv (Virtual)",
+    "ip": "192.168.50.76",
     "services": [
       {
         "title": "SSH",
         "port": "22",
         "url": {
-          "title": "ssh://user:123@192.168.50.78/"
+          "title": "ssh://kesha@192.168.50.76/"
         },
-        "login": "user",
-        "password": "123"
+        "login": "kesha",
+        "password": "A-nd****S"
       },
-      {
-        "title": "GitLab",
+	  {
+        "title": "pm2",
         "port": "80",
-        "url": {
-          "title": "gitlab.bonvio.com (gitlab.local)",
-          "link": "http://192.168.50.78/"
-        },
-        "login": "root",
-        "password": "y3l0l3k0r"
+        "sources": [
+          {
+            "title": "tost.bonvio.com (tost.local)",
+            "url": "http://tost.bonvio.com/"
+          },
+		  {
+            "title": "test.bonvio.com (test.local)",
+            "url": "http://test.bonvio.com/"
+          }
+        ]
       }
     ]
   },
   {
-    "name": "DebianSRV (Virtual)",
-    "ip": "192.168.50.79",
+    "name": "dbSrv (Virtual)",
+    "ip": "192.168.50.77",
     "services": [
       {
         "title": "SSH",
         "port": "22",
         "url": {
-          "title": "ssh://user:123@192.168.50.79/"
+          "title": "ssh://kesha@192.168.50.77/"
         },
-        "login": "user",
-        "password": "123"
+        "login": "kesha",
+        "password": "A-nd****S"
       },
       {
         "title": "Apache",
         "port": "80",
-        "url": {
-          "title": "192.168.50.79",
-          "link": "http://192.168.50.79/"
-        }
+        "sources": [
+          {
+            "title": "staff.bonvio.com (staff.local)",
+            "url": "http://staff.bonvio.com"
+          },
+          {
+            "title": "pma.bonvio.com (pma.local)",
+            "url": "http://pma.bonvio.com/"
+          },
+          {
+            "title": "gitlab.bonvio.com (gitlab.local)",
+            "url": "http://gitlab.bonvio.com/"
+          }
+        ]
       },
       {
         "title": "MySQL",
         "port": "3306",
         "url": {
           "title": "pma.bonvio.com (pma.local)",
-          "link": "http://192.168.50.79/pma/"
+          "link": "http://pma.bonvio.com/"
         },
         "login": "root",
-        "password": "y3l0l3k0r"
+        "password": "A-nd****S"
+      }
+    ]
+  },
+  {
+    "name": "gitSrv (Virtual)",
+    "ip": "192.168.50.78",
+    "services": [
+      {
+        "title": "SSH",
+        "port": "22",
+        "url": {
+          "title": "ssh://kesha@192.168.50.78/"
+        },
+        "login": "kesha",
+        "password": "A-nd****S"
+      },
+      {
+        "title": "nGinx",
+        "port": "80"
+      },
+      {
+        "title": "PostgreSQL"
+      }
+    ]
+
+  },
+  {
+    "name": "appSrv (Virtual)",
+    "ip": "192.168.50.79",
+    "services": [
+      {
+        "title": "SSH",
+        "port": "22",
+        "url": {
+          "title": "ssh://kesha@192.168.50.79/"
+        },
+        "login": "kesha",
+        "password": "A-nd****S"
+      },
+      {
+        "title": "nGinx",
+        "port": "80"
+      },
+      {
+        "title": "TomCat",
+        "port": "8080",
+		"sources": [
+          {
+            "title": "Project401",
+            "url": "http://webapps.bonvio.net/Project401/"
+          }
+        ]
       }
     ]
   }
