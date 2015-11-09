@@ -1,14 +1,13 @@
 {
-  "name": "staff.bonvio.com",
-  "version": "0.0.0",
-  "homepage": "https://github.com/bonvio-opr/staff_for_apache",
+  "name": "public_html",
+  "authors": [
+    "milomory <milomory@gmail.com>"
+  ],
   "description": "",
   "main": "",
   "moduleType": [],
-  "authors": [
-    "milomory"
-  ],
   "license": "MIT",
+  "homepage": "",
   "ignore": [
     "**/.*",
     "node_modules",
@@ -17,8 +16,9 @@
     "tests"
   ],
   "dependencies": {
+    "angular": "~1.4.7",
+    "angular-route": "~1.4.7",
     "bootstrap": "~3.3.5",
-    "angular": "angularjs#~1.4.7",
-    "font-awesome": "fontawesome#~4.4.0"
+    "font-awesome": "~4.4.0"
   }
 }

@@ -1,0 +1,35 @@
+
+	<table class="table table-responsive" data-ng-controller="projectsController">
+
+		<thead>
+			<tr>
+				<th>Title</th>
+				<th>App Type</th>
+				<th>Code</th>
+				<th>Type</th>
+			</tr>
+		</thead>
+
+		<tbody>
+		<tr ng-repeat="project in projects">
+
+			<td>{{project.title}}</td>
+
+			<td>{{project.type}}</td>
+
+			<td>{{project.pcode}}</td>
+
+			<td> 
+				<div ng-if="project.proj_type == 'Internal'"> 
+					<span class="label label-primary">{{project.proj_type}}</span> 
+				</div> 
+				<div ng-if="project.proj_type == 'External'"> 
+					<span class="label label-info">{{project.proj_type}}</span> 
+				</div> 
+			</td>
+
+		</tr>
+
+		</tbody> 
+		
+	</table>

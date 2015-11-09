@@ -1,16 +1,21 @@
 <!DOCTYPE html>
-<html lang="en" data-ng-app="staff.bonvio.com">
+
+<html ng-app="staffApp">
+
 <head>
-    <meta charset="utf-8">
+<!DOCTYPE html>
+<html lang="en" data-ng-app="staff.bonvio.com">
+
+<meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Staff.bonvio.com</title>
-    <link rel="shortcut icon" href="vendor/img/favicon.gif" type="image/x-icon">
+    <title>CMS.bonvio.com</title>
+    <link rel="shortcut icon" href="webapps/images/favicon.gif" type="image/x-icon">
     <!-- Bootstrap -->
-    <link href="vendor/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="webapps/vendors/bower_components/bootstrap/dist/css/bootstrap.min.css" />
     <!--FontAwesome-->
-    <link href="vendor/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="webapps/vendors/bower_components/font-awesome/css/font-awesome.min.css" />
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -22,7 +27,11 @@
             margin-top: 50px;
         }
     </style>
+
+
+
 </head>
+
 <body>
 
 <div class="container">
@@ -34,75 +43,38 @@
                     <!--<img alt="Brand" src="vendor/img/favicon.gif">-->
                     STAFF.bonvio.com
                 </a>
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="#employees">Employees</a></li>
+					<li><a href="#projects">Projects</a></li>
+					<li><a href="#services">Services</a></li>
+				</ul>
             </div>
             <!--<img class="navbar-text navbar-right" alt="Brand" src="vendor/img/favicon.gif">-->
         </div>
     </nav>
+<!--
+	<div ng-include src="'projects.html'"></div>
 
-    <table class="table table-responsive" data-ng-controller="ServersController">
-        <tr>
-            <th>Server name</th>
-            <th>Server IP</th>
-            <th>Services</th>
-        </tr>
-        <tr data-ng-repeat="server in servers">
-            <td>{{server.name}}</td>
-            <td>{{server.ip}}</td>
-            <td>
-                <div data-ng-repeat="service in server.services">
+	<div ng-include src="'services.html'"></div>
+-->
+<div ng-view></div>
 
-                        <h4>{{service.title}} <span data-ng-show="service.port">(Port: {{service.port}})</span>
-                            <small ng-show="service.url.title">URL: {{service.url.title}}
-                            <a target="_blank" ng-show="service.url.link" data-ng-href="{{service.url.link}}"><i
-                                    class="fa fa-link"></i></a>
-                            </small>
-
-                            <ul ng-show="service.login || service.password">
-                                <li><small>Login:
-                                    {{service.login}}</small>
-                                </li>
-                                <li><small>Password:
-                                    {{service.password}}</small>
-                                </li>
-                            </ul>
-                        </h4>
-
-                        <div ng-show="service.sources" class="panel panel-default">
-                            <!-- Default panel contents -->
-                            <div class="panel-heading">Sources:</div>
-
-                            <!-- Table -->
-                            <table class="table">
-                                <tr>
-                                    <th><small>TITLE</small></th>
-                                    <th><small>URL</small></th>
-                                    <th><small>LOGIN</small></th>
-                                    <th><small>PASSWORD</small></th>
-                                </tr>
-                                <tr data-ng-repeat="source in service.sources">
-                                    <td><small ng-show="source.title">{{source.title}}</small></td>
-                                    <td><small ng-show="source.url">{{source.url}}</small> <a target="_blank" data-ng-href="{{source.url}}"><i
-                                            class="fa fa-link"></i></a></td>
-                                    <td><small ng-show="source.login">{{source.login}}</small></td>
-                                    <td><small ng-show="source.password">{{source.password}}</small></td>
-                                </tr>
-                            </table>
-                        </div>
-
-                </div>
-            </td>
-        </tr>
-    </table>
 </div>
-
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins)
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>-->
 <!-- Include all compiled plugins (below), or include individual files as needed
 <script src="vendor/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>-->
-<script src="vendor/bower_components/angular/angular.min.js"></script>
+<script type="text/javascript" src="webapps/vendors/bower_components/angular/angular.min.js"></script>
+<script type="text/javascript" src="webapps/vendors/bower_components/angular-route/angular-route.min.js"></script>
+<!--
 <script src="vendor/bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
 <script src="vendor/bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
-<script src="vendor/scripts/main.js"></script>
-</body>
+-->
+<script type="text/javascript" src="webapps/scripts/app.js"></script>
+<script type="text/javascript" src="webapps/scripts/controllers/projects.js"></script>
+<script type="text/javascript" src="webapps/scripts/controllers/services.js"></script>
+<script type="text/javascript" src="webapps/scripts/controllers/users.js"></script>
+</body> 
+
 </html>

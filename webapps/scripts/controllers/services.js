@@ -1,9 +1,8 @@
 /**
  * Created by mil on 07.10.2015.
  */
-var staff = angular.module('staff.bonvio.com', []);
 
-staff.controller('ServersController', function($scope, $http) {
+staffApp.controller('servicesController', function($scope, $http) {
     /**
      * @type {{name: String, ip: String, services: Array}}
      */

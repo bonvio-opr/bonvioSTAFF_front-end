@@ -15,7 +15,7 @@
         "sources": [
           {
             "title": "order",
-            "url": "http://192.168.50.5:8080/order",
+            "url": "http://pc5:8080/order",
             "login": "tv",
             "password": "tv"
           }
