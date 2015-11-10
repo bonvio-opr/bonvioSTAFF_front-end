@@ -1,11 +1,94 @@
-﻿ <table class="table table-responsive" data-ng-controller="usersController">
-        <tr>
-            <th>fullName</th>
-            <th>shortName</th>
+﻿
+<p>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#userModal"
+            data-ng-click="vm.prepare()">
+        <i class="glyphicon glyphicon-plus"></i>
+        New Employee
+    </button>
+</p>
 
-        </tr>
-        <tr data-ng-repeat="user in users">
-            <td>{{user.fullName}}</td>
-            <td>{{user.shortName}}</td>
-        </tr>
-    </table>
+<div class="modal fade" id="userModal" tabindex="-1" role="dialog" aria-labelledby="userModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="serverModalLabel">{{vm.modalTitle}}</h4>
+            </div>
+            <div class="modal-body">
+                <form novalidate name="userForm">
+                    <div class="form-group has-feedback"
+                         data-ng-class="userForm.fullName.$error.required ? 'has-error' : 'has-success'">
+                        <label for="fullName" class="control-label">Имя</label>
+                        <input type="text" id="fullName" name="fullName" class="form-control" data-ng-model="vm.user.fullName"
+                               required>
+                        <span class="glyphicon form-control-feedback" aria-hidden="true"
+                              data-ng-class="userForm.fullName.$error.required ? 'glyphicon-remove' : 'glyphicon-ok'"></span>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <!--<button class="btn btn-danger" data-toggle="modal" data-target="#removeModal"
+                                    data-ng-show="vm.control == 'update'"
+                                    data-ng-click="vm.prepare(vm.user)">
+                    <i class="glyphicon glyphicon-trash"></i>
+                </button>-->
+                <button class="btn btn-default" data-dismiss="modal">Закрыть</button>
+                <button class="btn btn-primary" data-dismiss="modal"
+                        data-ng-disabled="userForm.$invalid"
+                        data-ng-click="vm.control == 'create' ? vm.create() : vm.update()">
+                    Сохранить
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<table class="table table-responsive">
+    <tr>
+        <th>fullName</th>
+        <th>phone (work)</th>
+        <th>phone (mobile)</th>
+        <th>email (work)</th>
+        <th>email (personal)</th>
+        <th>department</th>
+        <th>position</th>
+        <th></th>
+    </tr>
+    <tr data-ng-repeat="user in users">
+        <td>{{user.fullName}}</td>
+        <td>
+            <div data-ng-repeat="phone in user.phoneList">
+                <p data-ng-show="phone.type == 'work'">{{phone.number}}</p>
+            </div>
+        </td>
+        <td>
+            <div data-ng-repeat="phone in user.phoneList">
+                <p data-ng-show="phone.type == 'mobile'">{{phone.number}}</p>
+            </div>
+        </td>
+        <td>
+            <div data-ng-repeat="email in user.emailList">
+                <p data-ng-show="email.type == 'work'">{{email.address}}</p>
+            </div>
+        </td>
+        <td>
+            <div data-ng-repeat="email in user.emailList">
+                <p data-ng-show="email.type == 'personal'">{{email.address}}</p>
+            </div>
+        </td>
+        <td>{{user.department}}</td>
+        <td>{{user.position}}</td>
+        <td>
+            <button type="button" class="btn btn-link" data-toggle="modal" data-target="#userModal"
+                    data-ng-click="vm.prepare(user)">
+                <i class="glyphicon glyphicon-edit"></i>
+            </button>
+            <button type="button" class="btn btn-link" data-toggle="modal" data-target="#userModal"
+                    data-ng-click="vm.prepare(user)">
+                <i class="glyphicon glyphicon-trash"></i>
+            </button>
+        </td>
+    </tr>
+</table>

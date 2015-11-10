@@ -132,6 +132,10 @@
         },
         "login": "root",
         "password": "A-nd****S"
+      },
+      {
+        "title": "MongoDB",
+        "port": "27017"
       }
     ]
   },
