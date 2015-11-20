@@ -3,20 +3,10 @@
  */
 
 staffApp.controller('usersController', function($scope, $http) {
-
-    $scope.fullName = {};
-
-    $scope.shortName = {};
-
-    $scope.login = {};
-
-    $scope.email = {};
-	
-	$scope.workPhone = {};
-	
-	$scope.mobilePhone = {};
-	
-	$scope.address = {};
+    /**
+     * @type {{fullName: String, shortName: String, login: String, password: String, email: String, workPhone: String, mobilePhone: String, address: String, company: String, department: String, position: String}}
+     */
+    $scope.user = {};
 
     $http.get('_data/users.json').then(function(responce) {
         $scope.users = responce.data;

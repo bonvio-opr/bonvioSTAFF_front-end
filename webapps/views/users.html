@@ -1,9 +1,9 @@
-﻿
+
 <p>
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#userModal"
+    <button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#userModal"
             data-ng-click="vm.prepare()">
         <i class="glyphicon glyphicon-plus"></i>
-        New Employee
+        Добавить сотрудника
     </button>
 </p>
 
@@ -47,13 +47,13 @@
 
 <table class="table table-responsive">
     <tr>
-        <th>fullName</th>
-        <th>phone (work)</th>
-        <th>phone (mobile)</th>
-        <th>email (work)</th>
-        <th>email (personal)</th>
-        <th>department</th>
-        <th>position</th>
+        <th>Полное имя</th>
+        <th>Телефон </br><small>рабочий</small></th>
+        <th>Телефон </br><small>личный</small></th>
+        <th>E-mail </br><small>рабочий</small></th>
+        <th>E-mail </br><small>личный</small></th>
+        <th>Отдел</th>
+        <th>Должность</th>
         <th></th>
     </tr>
     <tr data-ng-repeat="user in users">
@@ -65,7 +65,7 @@
         </td>
         <td>
             <div data-ng-repeat="phone in user.phoneList">
-                <p data-ng-show="phone.type == 'mobile'">{{phone.number}}</p>
+                <p data-ng-show="phone.type == 'personal'">{{phone.number}}</p>
             </div>
         </td>
         <td>

@@ -1,7 +1,7 @@
 <?php
 
 // CONNECT TO THE DATABASE
-	require_once 'core/config/db_config.php';
+	require_once 'config/db_config.php';
 	
 // A QUICK QUERY ON A FAKE USER TABLE
 	$query = "SELECT * FROM `tbl_projects`";
@@ -22,7 +22,6 @@
 	mysqli_close($mysqli);
 
 //JSON-encode the response
-
 	echo $json_response = json_encode($arr);
 
 ?>

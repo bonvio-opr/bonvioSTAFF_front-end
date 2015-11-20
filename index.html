@@ -1,16 +1,14 @@
 <!DOCTYPE html>
 
-<html ng-app="staffApp">
+<html lang="en" data-ng-app="staff.bonvio.com">
 
 <head>
-<!DOCTYPE html>
-<html lang="en" data-ng-app="staff.bonvio.com">
 
 <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>CMS.bonvio.com</title>
+    <title>Staff Bonvio.com</title>
     <link rel="shortcut icon" href="webapps/images/favicon.gif" type="image/x-icon">
     <!-- Bootstrap -->
     <link rel="stylesheet" href="webapps/vendors/bower_components/bootstrap/dist/css/bootstrap.min.css" />
@@ -30,8 +28,6 @@
         }
     </style>
 
-
-
 </head>
 
 <body>
@@ -43,15 +39,19 @@
             <div class="navbar-header">
                 <a class="navbar-brand" href="#">
                     <!--<img alt="Brand" src="vendor/img/favicon.gif">-->
-                    STAFF.bonvio.com
+                    STAFF "bonvio.com"
                 </a>
-				<ul class="nav navbar-nav navbar-right">
-					<li><a href="#employees">Employees</a></li>
-					<li><a href="#projects">Projects</a></li>
-					<li><a href="#services">Services</a></li>
+				<ul class="nav navbar-nav">
+					<li><a href="#employees">Сотрудники</a></li>
+                    <li><a href="#interviews">Опросы</a></li>
+					<li><a href="#projects">Проекты</a></li>
+					<li><a href="#services">Сервисы</a></li>
 				</ul>
             </div>
-            <!--<img class="navbar-text navbar-right" alt="Brand" src="vendor/img/favicon.gif">-->
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#employees">Вход</a></li>
+                <li><a href="#interviews">Регистрация</a></li>
+            </ul>
         </div>
     </nav>
 <!--
@@ -61,8 +61,9 @@
 -->
 
 </div>
-
-<div ng-view></div>
+<div class="container">
+    <div ng-view></div>
+</div>
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins)
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>-->
@@ -76,6 +77,7 @@
 <script src="vendor/bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
 -->
 <script type="text/javascript" src="webapps/scripts/app.js"></script>
+<script type="text/javascript" src="webapps/scripts/controllers/interviews.js"></script>
 <script type="text/javascript" src="webapps/scripts/controllers/projects.js"></script>
 <script type="text/javascript" src="webapps/scripts/controllers/services.js"></script>
 <script type="text/javascript" src="webapps/scripts/controllers/users.js"></script>

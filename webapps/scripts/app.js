@@ -1,19 +1,27 @@
 //Define an angular module for our app
 
-var staffApp = angular.module('staffApp', ['ngRoute']);
+var staffApp = angular.module('staff.bonvio.com', ['ngRoute']);
 
 staffApp.config(['$routeProvider',
   function($routeProvider) {
     $routeProvider.
-    when('/employee', {
-      templateUrl: '/users.html',
+    when('/', {
+      templateUrl: '/webapps/views/users.html',
       controller: 'usersController'
     }).
+    when('/employee', {
+      templateUrl: '/webapps/views/users.html',
+      controller: 'usersController'
+    }).
+    when('/interviews', {
+      templateUrl: '/webapps/views/interviews.html',
+      controller: 'interviewsController'
+    }).
     when('/projects', {
-      templateUrl: '/projects.html'
+      templateUrl: '/webapps/views/projects.html'
     }).
     when('/services', {
-      templateUrl: '/services.html'
+      templateUrl: '/webapps/views/services.html'
     }).
     //  when('/phones/:phoneId', {
     //    templateUrl: 'partials/phone-detail.html',

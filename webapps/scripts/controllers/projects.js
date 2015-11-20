@@ -4,15 +4,24 @@
  
 staffApp.controller('projectsController', function($scope, $http) {
 
-	getProject();  
+	getProjects();
 
-	function getProject(){
+	function getProjects(){
 
-		$http.post("./getProject.php").success(function(data){
+		$http.post("./core/getProject.php").success(function(data){
 
 			$scope.projects = data; //the data are stored in projects
+			console.log(data);
 
 		});
+	}
+
+	$scope.delProject = function(id){
+		console.log(id);
+		/*$http.get('./core/delProject.php/?id='+id+'').success(function ( responce ) {
+			console.log(responce);
+			getCustomers();
+		});*/
 	}
 
 });
