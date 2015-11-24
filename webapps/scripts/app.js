@@ -6,12 +6,8 @@ staffApp.config(['$routeProvider',
   function($routeProvider) {
     $routeProvider.
     when('/', {
-      templateUrl: '/webapps/views/users.html',
-      controller: 'usersController'
-    }).
-    when('/employee', {
-      templateUrl: '/webapps/views/users.html',
-      controller: 'usersController'
+      templateUrl: '/webapps/views/interviews.html',
+      controller: 'interviewsController'
     }).
     when('/interviews', {
       templateUrl: '/webapps/views/interviews.html',
@@ -22,6 +18,10 @@ staffApp.config(['$routeProvider',
     }).
     when('/services', {
       templateUrl: '/webapps/views/services.html'
+    }).
+    when('/users', {
+      templateUrl: '/webapps/views/users.html',
+	  controller: 'usersController'
     }).
     //  when('/phones/:phoneId', {
     //    templateUrl: 'partials/phone-detail.html',

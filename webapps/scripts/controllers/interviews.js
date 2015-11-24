@@ -29,6 +29,7 @@ staffApp.controller('interviewsController', function($scope, $http) {
             console.log(responce);
             getCustomers();
         });
+        console.log($scope.vm.interview);
         console.log($scope.vm.interview.fullName);
         console.log("create");
     };
