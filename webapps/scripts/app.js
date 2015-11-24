@@ -5,10 +5,10 @@ var staffApp = angular.module('staff.bonvio.com', ['ngRoute']);
 staffApp.config(['$routeProvider',
   function($routeProvider) {
     $routeProvider.
-    when('/', {
+    /*when('/', {
       templateUrl: '/webapps/views/interviews.html',
       controller: 'interviewsController'
-    }).
+    }).*/
     when('/interviews', {
       templateUrl: '/webapps/views/interviews.html',
       controller: 'interviewsController'
@@ -28,6 +28,6 @@ staffApp.config(['$routeProvider',
     //    controller: 'PhoneDetailCtrl'
     //  }).
     otherwise({
-      redirectTo: '/employee'
+      redirectTo: '/interviews'
     });
   }]);
