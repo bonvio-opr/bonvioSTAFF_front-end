@@ -1,0 +1,47 @@
+<form novalidate name="companyForm">
+    <!--shortName-->
+    <div class="form-group has-feedback"
+         data-ng-class="companyForm.shortName.$error.required ? 'has-error' : 'has-success'">
+        <label for="shortName" class="control-label">shortName</label>
+        <input type="text" autofocus id="shortName" name="shortName" class="form-control" data-ng-model="vm.company.shortName"
+               required>
+                        <span class="glyphicon form-control-feedback" aria-hidden="true"
+                              data-ng-class="companyForm.shortName.$error.required ? 'glyphicon-remove' : 'glyphicon-ok'"></span>
+    </div>
+    <!--fullName-->
+    <div class="form-group has-feedback"
+         data-ng-class="companyForm.fullName.$error.required ? 'has-error' : 'has-success'">
+        <label for="fullName" class="control-label">fullName</label>
+        <input type="text" autofocus id="fullName" name="fullName" class="form-control" data-ng-model="vm.company.fullName"
+               required>
+                        <span class="glyphicon form-control-feedback" aria-hidden="true"
+                              data-ng-class="companyForm.fullName.$error.required ? 'glyphicon-remove' : 'glyphicon-ok'"></span>
+    </div>
+    <!--type-->
+    <!--<div class="form-group has-feedback"
+         data-ng-class="companyForm.type.$error.required ? 'has-error' : 'has-success'">
+        <label for="type" class="control-label">type</label>
+        <input type="text" autofocus id="type" name="type" class="form-control" data-ng-model="vm.company.type"
+               required>
+        <span class="glyphicon form-control-feedback" aria-hidden="true"
+              data-ng-class="companyForm.type.$error.required ? 'glyphicon-remove' : 'glyphicon-ok'"></span>
+    </div>-->
+    <!--address-->
+    <div class="form-group has-feedback"
+         data-ng-class="companyForm.address.$error.required ? 'has-error' : 'has-success'">
+        <label for="address" class="control-label">address</label>
+        <input type="text" autofocus id="address" name="address" class="form-control" data-ng-model="vm.company.address"
+               required>
+                        <span class="glyphicon form-control-feedback" aria-hidden="true"
+                              data-ng-class="companyForm.address.$error.required ? 'glyphicon-remove' : 'glyphicon-ok'"></span>
+    </div>
+    <!--description-->
+    <div class="form-group has-feedback"
+         data-ng-class="companyForm.shortName.$error.required ? 'has-error' : 'has-success'">
+        <label for="description" class="control-label">description</label>
+        <input type="text" autofocus id="description" name="description" class="form-control" data-ng-model="vm.company.description"
+               required>
+                        <span class="glyphicon form-control-feedback" aria-hidden="true"
+                              data-ng-class="companyForm.description.$error.required ? 'glyphicon-remove' : 'glyphicon-ok'"></span>
+    </div>
+</form>

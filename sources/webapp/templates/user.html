@@ -1,0 +1,70 @@
+<h1>User <small>page list</small></h1>
+<hr>
+
+<p>
+    <button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#userModal"
+            data-ng-click="vm.prepare()">
+        <i class="glyphicon glyphicon-plus"></i>
+        New user
+    </button>
+</p>
+
+
+<table class="table table-responsive">
+    <tr>
+        <th>login</th>
+        <th></th>
+    </tr>
+    <tr data-ng-repeat="user in vm.users">
+        <td>{{user.login}}</td>
+        <td>
+            <button type="button" class="btn btn-link pull-right"
+                    data-ng-click="vm.remove(user)">
+                <i class="glyphicon glyphicon-trash"></i>
+            </button>
+            <button type="button" class="btn btn-link pull-right" data-toggle="modal" data-target="#userModal"
+                    data-ng-click="vm.prepare(user)">
+                <i class="glyphicon glyphicon-edit"></i>
+            </button>
+        </td>
+    </tr>
+</table>
+
+
+<div class="modal fade" id="userModal" role="dialog" aria-labelledby="userModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="userModalLabel">{{vm.modalTitle}}</h4>
+            </div>
+            <div class="modal-body">
+                <form novalidate name="userForm">
+                    <div class="form-group has-feedback"
+                         data-ng-class="userForm.login.$error.required ? 'has-error' : 'has-success'">
+                        <label for="login" class="control-label">Имя</label>
+                        <input type="text" autofocus id="login" name="login" class="form-control" data-ng-model="vm.user.login"
+                               required>
+                        <span class="glyphicon form-control-feedback" aria-hidden="true"
+                              data-ng-class="userForm.login.$error.required ? 'glyphicon-remove' : 'glyphicon-ok'"></span>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <!--<button class="btn btn-danger" data-toggle="modal" data-target="#removeModal"
+                                    data-ng-show="vm.control == 'update'"
+                                    data-ng-click="vm.prepare(vm.user)">
+                    <i class="glyphicon glyphicon-trash"></i>
+                </button>-->
+                <button class="btn btn-default" data-dismiss="modal">Закрыть</button>
+                <button class="btn btn-primary" data-dismiss="modal"
+                        data-ng-disabled="userForm.$invalid"
+                        data-ng-click="vm.user.id ? vm.update() : vm.create()">
+                    Сохранить
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

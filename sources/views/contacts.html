@@ -1,0 +1,33 @@
+<ul class="nav nav-tabs" ng-init="vm.tab = 0">
+    <li ng-click="vm.tab = 0" ng-class="{'active': vm.tab == 0}"><a href="#">All Contacts</a></li>
+    <li ng-click="vm.tab = 1" ng-class="{'active': vm.tab == 1}"><a href="#">Companies</a></li>
+    <li ng-click="vm.tab = 2" ng-class="{'active': vm.tab == 2}"><a href="#">Individuals</a></li>
+</ul>
+
+<div class="row" ng-if="vm.tab == 0">
+    <div class="col-sm-12">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Short name</th>
+                <th>Full name</th>
+                <th>Type</th>
+                <th>Description</th>
+                <th>Address</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="contact in vm.contacts track by $index">
+                <td>{{contact.shortName}}</td>
+                <td>{{contact.fullName}}</td>
+                <td>{{contact.type}}</td>
+                <td>{{contact.description}}</td>
+                <td>{{contact.address}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<ui-view name="companies" ng-if="vm.tab == 1"></ui-view>
+<ui-view name="individuals" ng-if="vm.tab == 2"></ui-view>

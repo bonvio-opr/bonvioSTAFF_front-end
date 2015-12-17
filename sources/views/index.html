@@ -1,0 +1,41 @@
+<nav class="navbar navbar-inverse">
+    <div class="container">
+        <div class="navbar-header">
+            <button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+                <i class="glyphicon glyphicon-menu-hamburger"></i>
+            </button>
+            <a class="navbar-brand" href="/">CRM</a>
+        </div>
+        <div class="collapse navbar-collapse" id="navbar">
+            <ul class="nav navbar-nav">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Main <i class="caret"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Projects</a></li>
+                        <li><a href="#">Tasks</a></li>
+                        <li class="divider"></li>
+                        <li ui-sref-active="active"><a ui-sref="index.companies">Companies</a></li>
+                        <li ui-sref-active="active"><a ui-sref="index.individuals">Individuals</a></li>
+                        <li ui-sref-active="active"><a ui-sref="index.contacts">Contacts</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">Analitics</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resource Manegment <i class="caret"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a>Employees</a></li>
+                        <li><a>Departments</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Administation <i class="caret"></i></a>
+                    <ul class="dropdown-menu">
+                        <li ui-sref-active="active"><a ui-sref="index.users">Users</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container" ui-view="index"></div>

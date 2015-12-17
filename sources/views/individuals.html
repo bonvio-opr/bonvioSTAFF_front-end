@@ -1,0 +1,43 @@
+<div class="row">
+    <div class="col-sm-12">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Short name</th>
+                <th>Full name</th>
+                <th ng-hide="vm.isUpsert">Type</th>
+                <th>Description</th>
+                <th>Address</th>
+                <th ng-if="vm.isUpsert"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="individual in vm.individuals track by $index">
+                <td>{{individual.shortName}}</td>
+                <td>{{individual.fullName}}</td>
+                <td ng-hide="vm.isUpsert">{{individual.type}}</td>
+                <td>{{individual.description}}</td>
+                <td>{{individual.address}}</td>
+                <td ng-if="vm.isUpsert">
+                    <div class="pull-right">
+                        <div class="dropdown">
+                            <button class="btn btn-link btn-xs dropdown-toggle" data-toggle="dropdown"
+                                    ng-click="vm.prepare(individual)">
+                                <i class="glyphicon glyphicon-option-vertical"></i>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-right">
+                                <li data-toggle="modal" data-target="#upsert">
+                                    <a href="#">Update</a>
+                                </li>
+                                <li data-toggle="modal" data-target="#delete">
+                                    <a href="#">Delete</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
