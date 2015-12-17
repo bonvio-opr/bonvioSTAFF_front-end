@@ -9,8 +9,8 @@ app.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
         url: '/service',
         views: {
             index: {
-                templateUrl: 'tpl/services.html'//,
-                //controller: 'UserController'
+                templateUrl: 'tpl/services.html',
+                controller: 'ServiceController'
             }
         }
     }).state('index.companies', {
