@@ -5,11 +5,14 @@ app.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
         url: '/index',
         templateUrl: 'tpl/index.html',
         controller: 'IndexController'
-    //})
-        //.state('services', {
-        //url: '/index',
-        //templateUrl: 'tpl/services.html'//,
-        //controller: 'IndexController'
+    }).state('index.services', {
+        url: '/service',
+        views: {
+            index: {
+                templateUrl: 'tpl/services.html'//,
+                //controller: 'UserController'
+            }
+        }
     }).state('index.companies', {
         url: '/company',
         views: {
