@@ -1,0 +1,54 @@
+<table class="table table-responsive" data-ng-controller="servicesController">
+    <tr>
+        <th>Server name</th>
+        <th>Server IP</th>
+        <th>Services</th>
+    </tr>
+    <tr data-ng-repeat="server in servers">
+        <td>{{server.name}}</td>
+        <td>{{server.ip}}</td>
+        <td>
+            <div data-ng-repeat="service in server.services">
+
+                <h4>{{service.title}} <span data-ng-show="service.port">(Port: {{service.port}})</span>
+                    <small ng-show="service.url.title">URL: {{service.url.title}}
+                        <a target="_blank" ng-show="service.url.link" data-ng-href="{{service.url.link}}"><i
+                                class="fa fa-link"></i></a>
+                    </small>
+
+                    <ul ng-show="service.login || service.password">
+                        <li><small>Login:
+                            {{service.login}}</small>
+                        </li>
+                        <li><small>Password:
+                            {{service.password}}</small>
+                        </li>
+                    </ul>
+                </h4>
+
+                <div ng-show="service.sources" class="panel panel-default">
+                    <!-- Default panel contents -->
+                    <div class="panel-heading">Sources:</div>
+
+                    <!-- Table -->
+                    <table class="table">
+                        <tr>
+                            <th><small>TITLE</small></th>
+                            <th><small>URL</small></th>
+                            <th><small>LOGIN</small></th>
+                            <th><small>PASSWORD</small></th>
+                        </tr>
+                        <tr data-ng-repeat="source in service.sources">
+                            <td><small ng-show="source.title">{{source.title}}</small></td>
+                            <td><small ng-show="source.url">{{source.url}}</small> <a target="_blank" data-ng-href="{{source.url}}"><i
+                                    class="fa fa-link"></i></a></td>
+                            <td><small ng-show="source.login">{{source.login}}</small></td>
+                            <td><small ng-show="source.password">{{source.password}}</small></td>
+                        </tr>
+                    </table>
+                </div>
+
+            </div>
+        </td>
+    </tr>
+</table>
