@@ -2,7 +2,7 @@
     <div class="col-sm-12">
         <button class="btn btn-primary pull-right" data-toggle="modal" data-target="#upsert" ng-click="vm.prepare()">
             <i class="glyphicon glyphicon-plus"></i>
-            Create new ticket
+            Добавить новую идею
         </button>
     </div>
 </div>
@@ -31,10 +31,10 @@
                             </button>
                             <ul class="dropdown-menu dropdown-menu-right">
                                 <li data-toggle="modal" data-target="#upsert">
-                                    <a href="#">Update</a>
+                                    <a href="#">Обновить</a>
                                 </li>
                                 <li data-toggle="modal" data-target="#delete">
-                                    <a href="#">Delete</a>
+                                    <a href="#">Удалить</a>
                                 </li>
                             </ul>
                         </div>
@@ -73,7 +73,7 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-default" data-dismiss="modal">Cancel</button>
+                <button class="btn btn-default" data-dismiss="modal">Отмена</button>
                 <button class="btn btn-primary" data-dismiss="modal" ng-click="vm.ticket.id ? vm.update() : vm.create()"
                         ng-disabled="ticket.$invalid">
                     Save
@@ -91,8 +91,8 @@
                 <h4 class="modal-title">Confirm</h4>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-default" data-dismiss="modal">Cancel</button>
-                <button class="btn btn-danger" data-dismiss="modal" ng-click="vm.remove()">OK</button>
+                <button class="btn btn-default" data-dismiss="modal">Отмена</button>
+                <button class="btn btn-danger" data-dismiss="modal" ng-click="vm.remove()">Да</button>
             </div>
         </div>
     </div>

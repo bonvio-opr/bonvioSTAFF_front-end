@@ -86,26 +86,6 @@ app.run(function () {
     //app.backendUrl = 'http://192.168.50.5:8080/crm';
     app.backendUrl = 'http://localhost:8080/';
 });
-app.factory('Company', function ($resource) {
-    return $resource(app.backendUrl + '/company/:id', {}, {
-        update: {method: 'PUT'}
-    });
-});
-app.factory('Individual', function ($resource) {
-    return $resource(app.backendUrl + '/individual/:id', {}, {
-        update: {method: 'PUT'}
-    });
-});
-app.factory('Ticket', function ($resource) {
-    return $resource(app.backendUrl + '/ticket/:id', {}, {
-        update: {method: 'PUT'}
-    });
-});
-app.factory('User', function ($resource) {
-    return $resource(app.backendUrl + '/user/:id', {}, {
-        update: {method: 'PUT'}
-    });
-});
 app.controller('CompanyController', function ($scope, $state, CRUDService, Company) {
     $scope.vm = CRUDService.init('company', Company);
     $scope.vm.isUpsert = $state.is('index.companies');
@@ -217,7 +197,7 @@ app.controller('TicketController', function ($scope, CRUDService, Ticket) {
     $scope.vm.create = function () {
         Ticket.save({}, $scope.vm.ticket, function (data) {
             $scope.vm.ticket.id = data.id;
-            $scope.vm.ticket.dateCreate = 'NOW';
+            $scope.vm.ticket.dateCreate = 'сейчас';
             $scope.vm.tickets.push($scope.vm.ticket);
             $scope.vm.prepare($scope.vm.ticket);
         }).$promise.catch(function (response) {
@@ -229,7 +209,7 @@ app.controller('TicketController', function ($scope, CRUDService, Ticket) {
         delete $scope.vm.ticket.dateCreate;
         Ticket.update({}, $scope.vm.ticket, function (data) {
             $scope.vm.ticket.id = data.id;
-            $scope.vm.ticket.dateCreate = 'NOW';
+            $scope.vm.ticket.dateCreate = 'сейчас';
             $scope.vm.tickets[$scope.vm.index] = angular.copy($scope.vm.ticket);
         }).$promise.catch(function (response) {
             jQuery('#error.modal').modal('show').find('.modal-body').html(response.data);
@@ -239,6 +219,26 @@ app.controller('TicketController', function ($scope, CRUDService, Ticket) {
 });
 app.controller('UserController', function ($scope, CRUDService, User) {
     $scope.vm = CRUDService.init('user', User);
+});
+app.factory('Company', function ($resource) {
+    return $resource(app.backendUrl + '/company/:id', {}, {
+        update: {method: 'PUT'}
+    });
+});
+app.factory('Individual', function ($resource) {
+    return $resource(app.backendUrl + '/individual/:id', {}, {
+        update: {method: 'PUT'}
+    });
+});
+app.factory('Ticket', function ($resource) {
+    return $resource(app.backendUrl + '/ticket/:id', {}, {
+        update: {method: 'PUT'}
+    });
+});
+app.factory('User', function ($resource) {
+    return $resource(app.backendUrl + '/user/:id', {}, {
+        update: {method: 'PUT'}
+    });
 });
 app.service('CRUDService', function () {
     var self = this;

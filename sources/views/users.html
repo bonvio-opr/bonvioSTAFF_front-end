@@ -2,7 +2,7 @@
     <div class="col-sm-12">
         <button class="btn btn-primary pull-right" data-toggle="modal" data-target="#upsert" ng-click="vm.prepare()">
             <i class="glyphicon glyphicon-plus"></i>
-            Create new user
+            Добавить пользователя системы
         </button>
     </div>
 </div>
@@ -11,7 +11,7 @@
         <table class="table">
             <thead>
             <tr>
-                <th>Login</th>
+                <th>Логин</th>
                 <th></th>
             </tr>
             </thead>
@@ -52,7 +52,7 @@
             <div class="modal-body">
                 <form novalidate name="user">
                     <div class="form-group has-feedback" ng-class="{'has-error': user.login.$error.required}">
-                        <label for="login">Login</label>
+                        <label for="login">Логин</label>
                         <input type="text" id="login" name="login" class="form-control" required
                                ng-model="vm.user.login">
                         <i class="glyphicon form-control-feedback"
@@ -79,8 +79,8 @@
                 <h4 class="modal-title">Confirm</h4>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-default" data-dismiss="modal">Cancel</button>
-                <button class="btn btn-danger" data-dismiss="modal" ng-click="vm.remove()">OK</button>
+                <button class="btn btn-default" data-dismiss="modal">Отмена</button>
+                <button class="btn btn-danger" data-dismiss="modal" ng-click="vm.remove()">Да</button>
             </div>
         </div>
     </div>

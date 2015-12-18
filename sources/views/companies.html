@@ -3,11 +3,11 @@
         <table class="table">
             <thead>
             <tr>
-                <th>Short name</th>
-                <th>Full name</th>
+                <th>Название</th>
+                <th>Полное название</th>
                 <th ng-hide="vm.isUpsert">Type</th>
-                <th>Description</th>
-                <th>Address</th>
+                <th>Описание</th>
+                <th>Адрес</th>
                 <th ng-if="vm.isUpsert"></th>
             </tr>
             </thead>
@@ -27,10 +27,10 @@
                             </button>
                             <ul class="dropdown-menu dropdown-menu-right">
                                 <li data-toggle="modal" data-target="#upsert">
-                                    <a href="#">Update</a>
+                                    <a href="#">Обновить</a>
                                 </li>
                                 <li data-toggle="modal" data-target="#delete">
-                                    <a href="#">Delete</a>
+                                    <a href="#">Удалить</a>
                                 </li>
                             </ul>
                         </div>

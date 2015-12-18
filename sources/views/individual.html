@@ -2,7 +2,7 @@
     <div class="col-sm-12">
         <button class="btn btn-primary pull-right" data-toggle="modal" data-target="#upsert" ng-click="vm.prepare()">
             <i class="glyphicon glyphicon-plus"></i>
-            Create new individual
+            Добавить контакт
         </button>
     </div>
 </div>
@@ -19,7 +19,7 @@
             <div class="modal-body">
                 <form novalidate name="individual">
                     <div class="form-group has-feedback" ng-class="{'has-error': individual.shortName.$error.required}">
-                        <label for="shortName">Short name</label>
+                        <label for="shortName">Имя</label>
                         <input type="text" id="shortName" name="shortName" class="form-control" required
                                ng-model="vm.individual.shortName">
                         <i class="glyphicon form-control-feedback"
@@ -27,7 +27,7 @@
                     </div>
 
                     <div class="form-group has-feedback" ng-class="{'has-error': individual.fullName.$error.required}">
-                        <label for="fullName">Full name</label>
+                        <label for="fullName">Полное имя</label>
                         <input type="text" id="fullName" name="fullName" class="form-control" required
                                ng-model="vm.individual.fullName">
                         <i class="glyphicon form-control-feedback"
@@ -35,20 +35,20 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="description">Description</label>
+                        <label for="description">Описание</label>
                         <textarea id="description" name="description" class="form-control"
                                   ng-model="vm.individual.description"></textarea>
                     </div>
 
                     <div class="form-group">
-                        <label for="address">Address</label>
+                        <label for="address">Адрес</label>
                         <textarea id="address" name="address" class="form-control"
                                   ng-model="vm.individual.address"></textarea>
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-default" data-dismiss="modal">Cancel</button>
+                <button class="btn btn-default" data-dismiss="modal">Отмена</button>
                 <button class="btn btn-primary" data-dismiss="modal"
                         ng-click="vm.individual.id ? vm.update() : vm.create()"
                         ng-disabled="individual.$invalid">
@@ -64,11 +64,11 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button class="close glyphicon glyphicon-remove" data-dismiss="modal"></button>
-                <h4 class="modal-title">Confirm</h4>
+                <h4 class="modal-title">Подтверждение</h4>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-default" data-dismiss="modal">Cancel</button>
-                <button class="btn btn-danger" data-dismiss="modal" ng-click="vm.remove()">OK</button>
+                <button class="btn btn-default" data-dismiss="modal">Отмена</button>
+                <button class="btn btn-danger" data-dismiss="modal" ng-click="vm.remove()">Да</button>
             </div>
         </div>
     </div>
