@@ -9,18 +9,21 @@
         <table class="table">
             <thead>
             <tr>
+                <th></th>
                 <th>Имя/Название компании</th>
                 <th>Полное имя</th>
-                <th>Тип контакта</th>
                 <th>Описание</th>
                 <th>Адрес</th>
             </tr>
             </thead>
             <tbody>
             <tr ng-repeat="contact in vm.contacts track by $index">
+                <td>
+                    <span ng-if='contact.type == "company"' class="glyphicon glyphicon-lock"></span>
+                    <span ng-if='contact.type == "individual"' class="glyphicon glyphicon-user"></span>
+                </td>
                 <td>{{contact.shortName}}</td>
                 <td>{{contact.fullName}}</td>
-                <td>{{contact.type}}</td>
                 <td>{{contact.description}}</td>
                 <td>{{contact.address}}</td>
             </tr>

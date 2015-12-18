@@ -5,7 +5,6 @@
             <tr>
                 <th>Название</th>
                 <th>Полное название</th>
-                <th ng-hide="vm.isUpsert">Type</th>
                 <th>Описание</th>
                 <th>Адрес</th>
                 <th ng-if="vm.isUpsert"></th>
@@ -15,7 +14,6 @@
             <tr ng-repeat="company in vm.companys track by $index">
                 <td>{{company.shortName}}</td>
                 <td>{{company.fullName}}</td>
-                <td ng-hide="vm.isUpsert">{{company.type}}</td>
                 <td>{{company.description}}</td>
                 <td>{{company.address}}</td>
                 <td ng-if="vm.isUpsert">

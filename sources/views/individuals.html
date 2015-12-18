@@ -5,7 +5,6 @@
             <tr>
                 <th>Имя</th>
                 <th>Полное имя</th>
-                <th ng-hide="vm.isUpsert">Type</th>
                 <th>Описание</th>
                 <th>Адрес</th>
                 <th ng-if="vm.isUpsert"></th>
@@ -15,7 +14,6 @@
             <tr ng-repeat="individual in vm.individuals track by $index">
                 <td>{{individual.shortName}}</td>
                 <td>{{individual.fullName}}</td>
-                <td ng-hide="vm.isUpsert">{{individual.type}}</td>
                 <td>{{individual.description}}</td>
                 <td>{{individual.address}}</td>
                 <td ng-if="vm.isUpsert">
