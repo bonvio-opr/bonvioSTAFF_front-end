@@ -1,7 +1,7 @@
 <ul class="nav nav-tabs" ng-init="vm.tab = 0">
-    <li ng-click="vm.tab = 0" ng-class="{'active': vm.tab == 0}"><a href="#">All Contacts</a></li>
-    <li ng-click="vm.tab = 1" ng-class="{'active': vm.tab == 1}"><a href="#">Companies</a></li>
-    <li ng-click="vm.tab = 2" ng-class="{'active': vm.tab == 2}"><a href="#">Individuals</a></li>
+    <li ng-click="vm.tab = 0" ng-class="{'active': vm.tab == 0}"><a href="#">Все контакты</a></li>
+    <li ng-click="vm.tab = 1" ng-class="{'active': vm.tab == 1}"><a href="#">Только компании</a></li>
+    <li ng-click="vm.tab = 2" ng-class="{'active': vm.tab == 2}"><a href="#">Только физ. лица</a></li>
 </ul>
 
 <div class="row" ng-if="vm.tab == 0">
