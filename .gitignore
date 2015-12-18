@@ -1,7 +1,7 @@
 .idea
-bower_components
-node_modules
-www/js
-www/fonts
-www/css
-www/tpl
+#bower_components
+#node_modules
+#www/js
+#www/fonts
+#www/css
+#www/tpl
