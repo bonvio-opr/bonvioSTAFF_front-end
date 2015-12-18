@@ -21,6 +21,14 @@ app.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
                 controller: 'InterviewController'
             }
         }
+    }).state('index.tickets', {
+        url: '/ticket',
+        views: {
+            index: {
+                templateUrl: 'tpl/ticket.html',
+                controller: 'TicketController'
+            }
+        }
     }).state('index.companies', {
         url: '/company',
         views: {
@@ -85,6 +93,11 @@ app.factory('Company', function ($resource) {
 });
 app.factory('Individual', function ($resource) {
     return $resource(app.backendUrl + '/individual/:id', {}, {
+        update: {method: 'PUT'}
+    });
+});
+app.factory('Ticket', function ($resource) {
+    return $resource(app.backendUrl + '/ticket/:id', {}, {
         update: {method: 'PUT'}
     });
 });
@@ -197,6 +210,32 @@ app.controller('ServiceController', function($scope, $http) {
     $http.get('/_data/servers.json').then(function(responce) {
         $scope.servers = responce.data;
     })
+});
+app.controller('TicketController', function ($scope, CRUDService, Ticket) {
+    $scope.vm = CRUDService.init('ticket', Ticket);
+
+    $scope.vm.create = function () {
+        Ticket.save({}, $scope.vm.ticket, function (data) {
+            $scope.vm.ticket.id = data.id;
+            $scope.vm.ticket.dateCreate = 'NOW';
+            $scope.vm.tickets.push($scope.vm.ticket);
+            $scope.vm.prepare($scope.vm.ticket);
+        }).$promise.catch(function (response) {
+            jQuery('#error.modal').modal('show').find('.modal-body').html(response.data);
+        });
+    };
+
+    $scope.vm.update = function () {
+        delete $scope.vm.ticket.dateCreate;
+        Ticket.update({}, $scope.vm.ticket, function (data) {
+            $scope.vm.ticket.id = data.id;
+            $scope.vm.ticket.dateCreate = 'NOW';
+            $scope.vm.tickets[$scope.vm.index] = angular.copy($scope.vm.ticket);
+        }).$promise.catch(function (response) {
+            jQuery('#error.modal').modal('show').find('.modal-body').html(response.data);
+        });
+    };
+    
 });
 app.controller('UserController', function ($scope, CRUDService, User) {
     $scope.vm = CRUDService.init('user', User);
