@@ -13,6 +13,13 @@ app.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
                 controller: 'ServiceController'
             }
         }
+    }).state('index.opr', {
+        url: '/opr',
+        views: {
+            index: {
+                templateUrl: 'tpl/opr.html'
+            }
+        }
     }).state('index.interviews', {
         url: '/interview',
         views: {

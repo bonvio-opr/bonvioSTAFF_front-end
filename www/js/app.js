@@ -13,6 +13,13 @@ app.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
                 controller: 'ServiceController'
             }
         }
+    }).state('index.opr', {
+        url: '/opr',
+        views: {
+            index: {
+                templateUrl: 'tpl/opr.html'
+            }
+        }
     }).state('index.interviews', {
         url: '/interview',
         views: {
@@ -220,26 +227,6 @@ app.controller('TicketController', function ($scope, CRUDService, Ticket) {
 app.controller('UserController', function ($scope, CRUDService, User) {
     $scope.vm = CRUDService.init('user', User);
 });
-app.factory('Company', function ($resource) {
-    return $resource(app.backendUrl + '/company/:id', {}, {
-        update: {method: 'PUT'}
-    });
-});
-app.factory('Individual', function ($resource) {
-    return $resource(app.backendUrl + '/individual/:id', {}, {
-        update: {method: 'PUT'}
-    });
-});
-app.factory('Ticket', function ($resource) {
-    return $resource(app.backendUrl + '/ticket/:id', {}, {
-        update: {method: 'PUT'}
-    });
-});
-app.factory('User', function ($resource) {
-    return $resource(app.backendUrl + '/user/:id', {}, {
-        update: {method: 'PUT'}
-    });
-});
 app.service('CRUDService', function () {
     var self = this;
 
@@ -292,4 +279,24 @@ app.service('CRUDService', function () {
 
         return vm;
     }
+});
+app.factory('Company', function ($resource) {
+    return $resource(app.backendUrl + '/company/:id', {}, {
+        update: {method: 'PUT'}
+    });
+});
+app.factory('Individual', function ($resource) {
+    return $resource(app.backendUrl + '/individual/:id', {}, {
+        update: {method: 'PUT'}
+    });
+});
+app.factory('Ticket', function ($resource) {
+    return $resource(app.backendUrl + '/ticket/:id', {}, {
+        update: {method: 'PUT'}
+    });
+});
+app.factory('User', function ($resource) {
+    return $resource(app.backendUrl + '/user/:id', {}, {
+        update: {method: 'PUT'}
+    });
 });
