@@ -1,0 +1,87 @@
+<button class="btn btn-info pull-left" data-toggle="modal" data-target="#upsert" ng-click="vm.prepare()">
+    <i class="glyphicon glyphicon-plus"></i>
+    Новый элемент навигации
+</button>
+
+<div class="row">
+    <div class="col-sm-12">
+        <table class="table">
+            <thead>
+            <tr>
+                <th></th>
+                <th>Заголовок</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="navigation in vm.navigations track by $index">
+                <td>{{navigation.id}}</td>
+                <td>{{navigation.title}}</td>
+                <td>
+                    <div class="pull-right">
+                        <div class="dropdown">
+                            <button class="btn btn-link btn-xs dropdown-toggle" data-toggle="dropdown"
+                                    ng-click="vm.prepare(navigation)">
+                                <i class="glyphicon glyphicon-option-vertical"></i>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-right">
+                                <li data-toggle="modal" data-target="#upsert">
+                                    <a href="#">Редактировать</a>
+                                </li>
+                                <li data-toggle="modal" data-target="#delete">
+                                    <a href="#">Удалить</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="modal fade" id="upsert" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close glyphicon glyphicon-remove" data-dismiss="modal"></button>
+                <h4 class="modal-title">{{vm.navigation.id ? 'Редактировать элемент в навигации' : 'Новый элемент навигации'}}</h4>
+            </div>
+            <div class="modal-body">
+                <form novalidate name="navigation">
+                    <div class="form-group has-feedback" ng-class="{'has-error': navigation.title.$error.required}">
+                        <label for="title">Заголовок</label>
+                        <input type="text" id="title" name="title" class="form-control" required
+                               ng-model="vm.navigation.title">
+                        <i class="glyphicon form-control-feedback"
+                           ng-class="{'glyphicon-remove': navigation.title.$error.required}"></i>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-default" data-dismiss="modal">Отмена</button>
+                <button class="btn btn-primary" data-dismiss="modal"
+                        ng-click="vm.navigation.id ? vm.update() : vm.create()"
+                        ng-disabled="navigation.$invalid">
+                    Сохранить
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="delete" tabindex="-1">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close glyphicon glyphicon-remove" data-dismiss="modal"></button>
+                <h4 class="modal-title">Удалить?</h4>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-default" data-dismiss="modal">Отмена</button>
+                <button class="btn btn-danger" data-dismiss="modal" ng-click="vm.remove()">ОК</button>
+            </div>
+        </div>
+    </div>
+</div>
