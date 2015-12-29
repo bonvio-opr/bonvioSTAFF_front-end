@@ -1,10 +1,10 @@
-var app = angular.module('app', ['ngMessages', 'ngResource', 'ui.router']);
+var app = angular.module('app', ['ngMessages', 'ngResource', 'jerryhsia.minieditor', 'ui.router']);
 
 app.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
     $stateProvider.state('index', {
         url: '/index',
         templateUrl: 'tpl/index.html',
-        controller: 'IndexController'
+        controller: 'IndexController as vm'
     }).state('index.services', {
         url: '/service',
         views: {
@@ -93,6 +93,12 @@ app.run(function () {
     //app.backendUrl = 'http://192.168.50.5:8080/crm';
     app.backendUrl = 'http://localhost:8080/';
 });
+
+var base = {
+    backend: 'http://tomcat.bonvio.net/staff.data'
+};
+
+app.value('base', base);
 app.controller('CompanyController', function ($scope, $state, CRUDService, Company) {
     $scope.vm = CRUDService.init('company', Company);
     $scope.vm.isUpsert = $state.is('index.companies');
@@ -106,8 +112,24 @@ app.controller('ContactController', function ($scope, Company, Individual) {
         });
     });
 });
-app.controller('IndexController', function ($scope) {
-    $scope.vm = this;
+app.controller('IndexController', function ($scope, Static, $rootScope, Navigation) {
+    var vm = this;
+
+    vm.navigations = Navigation.query(function (data) {
+        vm.navigations = data;
+    });
+
+    $rootScope.$on('havigationHasYourBrain', function (evt, data) {
+        vm.navigations = data;
+    });
+
+    $rootScope.$on('havigationHasYourBrainOnce', function () {
+        vm.navigations = Navigation.query();
+    });
+
+    $rootScope.$on('havigationHasYourBrainOnceBECOUSE-kill', function () {
+        vm.navigations = Navigation.query();
+    });
 });
 app.controller('IndividualController', function ($scope, $state, CRUDService, Individual) {
     $scope.vm = CRUDService.init('individual', Individual);
@@ -172,6 +194,73 @@ app.controller('InterviewController', function($scope, $http) {
 
 
 });
+(function () {
+    function NavigationController(Navigation, $rootScope) {
+        var vm = this;
+
+        vm.navigations = Navigation.query(function (data) {
+            $rootScope.$broadcast('havigationHasYourBrain', data);
+        });
+
+        vm.prepare = function (navigation) {
+            vm.navigation = angular.copy(navigation) || {};
+            vm.index = vm.navigations.indexOf(navigation);
+        };
+
+        vm.create = function () {
+            var navigation = new Navigation(vm.navigation);
+            navigation.$save(function (navigation) {
+                vm.navigation = angular.extend(navigation, vm.navigation);
+                vm.navigations.push(vm.navigation);
+                vm.prepare(vm.navigation);
+
+                $rootScope.$broadcast('havigationHasYourBrain', vm.navigations);
+            });
+        };
+
+        vm.update = function () {
+            vm.navigation.$update(function (navigation) {
+                vm.navigation = angular.extend(navigation, vm.navigation);
+                vm.navigations[vm.index] = angular.copy(vm.navigation);
+                vm.prepare(vm.navigation);
+
+                $rootScope.$broadcast('havigationHasYourBrain', vm.navigations);
+            });
+        };
+
+        vm.remove = function () {
+            vm.navigation.$delete(function () {
+                vm.navigations.splice(vm.index, 1);
+                vm.prepare();
+            });
+        };
+
+        vm.detail = function () {
+            Navigation.get(vm.navigation, function (navigation) {
+                vm.navigation = angular.extend(navigation, vm.navigation);
+                vm.navigations[vm.index] = angular.copy(vm.navigation);
+                vm.prepare(vm.navigation);
+            });
+        };
+    }
+
+    function config($stateProvider) {
+        $stateProvider.state('index.navigation', {
+            url: '/navigation',
+            views: {
+                'index': {
+                    controller: 'NavigationController as vm',
+                    templateUrl: 'tpl/navigation.html'
+                }
+            }
+        });
+    }
+
+    angular
+        .module('app')
+        .controller('NavigationController', NavigationController)
+        .config(config);
+})();
 /**
  * Created by mil on 18.12.15.
  */
@@ -198,6 +287,96 @@ app.controller('ServiceController', function($scope, $http) {
         $scope.servers = responce.data;
     })
 });
+(function () {
+    function StaticController(Static, Navigation, $rootScope) {
+        var vm = this;
+
+        vm.staticPages = Static.query();
+
+        vm.navigations = Navigation.query();
+
+        vm.prepare = function (staticPage) {
+            vm.staticPage = angular.copy(staticPage) || {};
+            vm.index = vm.staticPages.indexOf(staticPage);
+            if (vm.staticPage.id) vm.detail();
+        };
+
+        vm.create = function () {
+            //delete vm.staticPage.content;
+            //vm.staticPage.navigationList = [vm.staticPage.navigationList];
+            var staticPage = new Static(vm.staticPage);
+            staticPage.$save(function (staticPage) {
+                vm.staticPage = angular.extend(staticPage, vm.staticPage);
+                vm.staticPages.push(vm.staticPage);
+                vm.prepare(vm.staticPage);
+
+                $rootScope.$broadcast('havigationHasYourBrainOnce', vm.staticPage);
+            });
+        };
+
+        vm.update = function () {
+            //vm.staticPage.navigationList = [vm.staticPage.navigationList];
+            vm.staticPage.$update(function (staticPage) {
+                vm.staticPage = angular.extend(staticPage, vm.staticPage);
+                vm.staticPages[vm.index] = angular.copy(vm.staticPage);
+                vm.prepare(vm.staticPage);
+
+                $rootScope.$broadcast('havigationHasYourBrainOnce');
+            });
+        };
+
+        vm.remove = function () {
+            vm.staticPage.$delete(function () {
+                $rootScope.$broadcast('havigationHasYourBrainOnceBECOUSE-kill');
+                vm.staticPages.splice(vm.index, 1);
+                vm.prepare();
+            });
+
+
+        };
+
+        vm.detail = function () {
+            Static.get(vm.staticPage, function (staticPage) {
+                vm.staticPage = angular.extend(staticPage, vm.staticPage);
+                vm.staticPages[vm.index] = angular.copy(vm.staticPage);
+                //vm.prepare(vm.staticPage);
+            });
+        };
+    }
+
+    function PageController(Static, $state) {
+        var vm = this;
+        vm.page = Static.get($state.params);
+    }
+
+    function config($stateProvider) {
+        $stateProvider
+            .state('index.static', {
+                url: '/static',
+                views: {
+                    'index': {
+                        controller: 'StaticController as vm',
+                        templateUrl: 'tpl/static.html'
+                    }
+                }
+            })
+            .state('index.page', {
+                url: '/static/:id',
+                views: {
+                    'index': {
+                        controller: 'PageController as vm',
+                        templateUrl: 'tpl/page.html'
+                    }
+                }
+            });
+    }
+
+    angular
+        .module('app')
+        .controller('StaticController', StaticController)
+        .controller('PageController', PageController)
+        .config(config);
+})();
 app.controller('TicketController', function ($scope, CRUDService, Ticket) {
     $scope.vm = CRUDService.init('ticket', Ticket);
 
@@ -226,6 +405,98 @@ app.controller('TicketController', function ($scope, CRUDService, Ticket) {
 });
 app.controller('UserController', function ($scope, CRUDService, User) {
     $scope.vm = CRUDService.init('user', User);
+});
+(function () {
+    function codeCompile($compile, $timeout) {
+        return {
+            restrict: 'E',
+            scope: {
+                template1: '='
+            },
+            replace: true,
+            link: function (scope, element) {
+                $timeout(function () {
+                    var template = scope.template1;
+                    var linkFn = $compile(template);
+                    var content = linkFn(scope);
+                    element.append(content);
+                }, 100);
+            }
+        };
+    }
+
+    /**
+     * @ngdoc directive
+     * @name codeCompile
+     * @restrict E
+     *
+     * @param {HTMLBaseElement} template1
+     */
+    angular
+        .module('app')
+        .directive('codeCompile', codeCompile);
+})();
+(function () {
+    function convertToNumber() {
+        return {
+            require: 'ngModel',
+            link: function(scope, element, attrs, ngModel) {
+                ngModel.$parsers.push(function(val) {
+                    return parseInt(val, 10);
+                });
+                ngModel.$formatters.push(function(val) {
+                    return '' + val;
+                });
+            }
+        };
+    }
+
+    angular
+        .module('app')
+        .directive('convertToNumber', convertToNumber);
+})();
+app.factory('Company', function ($resource) {
+    return $resource(app.backendUrl + '/company/:id', {}, {
+        update: {method: 'PUT'}
+    });
+});
+app.factory('Individual', function ($resource) {
+    return $resource(app.backendUrl + '/individual/:id', {}, {
+        update: {method: 'PUT'}
+    });
+});
+(function () {
+    function Navigation($resource, base) {
+        return $resource(base.backend + '/navigation/:id', {id: '@id'}, {
+            update: {method: 'PUT'}
+        });
+    }
+
+    angular
+        .module('app')
+        .factory('Navigation', Navigation);
+})();
+(function () {
+    function Static($resource, base) {
+        return $resource(base.backend + '/page/:id', {id: '@id'}, {
+            update: {method: 'PUT'}
+        });
+    }
+
+    angular
+        .module('app')
+        .factory('Static', Static);
+})();
+
+app.factory('Ticket', function ($resource) {
+    return $resource(app.backendUrl + '/ticket/:id', {}, {
+        update: {method: 'PUT'}
+    });
+});
+app.factory('User', function ($resource) {
+    return $resource(app.backendUrl + '/user/:id', {}, {
+        update: {method: 'PUT'}
+    });
 });
 app.service('CRUDService', function () {
     var self = this;
@@ -279,24 +550,4 @@ app.service('CRUDService', function () {
 
         return vm;
     }
-});
-app.factory('Company', function ($resource) {
-    return $resource(app.backendUrl + '/company/:id', {}, {
-        update: {method: 'PUT'}
-    });
-});
-app.factory('Individual', function ($resource) {
-    return $resource(app.backendUrl + '/individual/:id', {}, {
-        update: {method: 'PUT'}
-    });
-});
-app.factory('Ticket', function ($resource) {
-    return $resource(app.backendUrl + '/ticket/:id', {}, {
-        update: {method: 'PUT'}
-    });
-});
-app.factory('User', function ($resource) {
-    return $resource(app.backendUrl + '/user/:id', {}, {
-        update: {method: 'PUT'}
-    });
 });

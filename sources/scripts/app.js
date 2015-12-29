@@ -1,10 +1,10 @@
-var app = angular.module('app', ['ngMessages', 'ngResource', 'ui.router']);
+var app = angular.module('app', ['ngMessages', 'ngResource', 'jerryhsia.minieditor', 'ui.router']);
 
 app.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
     $stateProvider.state('index', {
         url: '/index',
         templateUrl: 'tpl/index.html',
-        controller: 'IndexController'
+        controller: 'IndexController as vm'
     }).state('index.services', {
         url: '/service',
         views: {
@@ -93,3 +93,9 @@ app.run(function () {
     //app.backendUrl = 'http://192.168.50.5:8080/crm';
     app.backendUrl = 'http://localhost:8080/';
 });
+
+var base = {
+    backend: 'http://tomcat.bonvio.net/staff.data'
+};
+
+app.value('base', base);

@@ -18,11 +18,11 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Задачи <i class="caret"></i></a>
                     <ul class="dropdown-menu">
                         <li ui-sref-active="active"><a ui-sref="index.tickets">Идеи</a></li>
-                        <li><a href="#">Проекты</a></li>
-                        <li><a href="#">TODO</a></li>
+                        <!--<li><a href="#">Проекты</a></li>-->
+                        <!--<li><a href="#">TODO</a></li>-->
                     </ul>
                 </li>
-                <li class="dropdown">
+                <!--<li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Работа с клиентами <i class="caret"></i></a>
                     <ul class="dropdown-menu">
                         <li ui-sref-active="active"><a ui-sref="index.tickets">Идеи</a></li>
@@ -35,8 +35,8 @@
                         <li class="divider"></li>
                         <li><a href="#">Аналитика</a></li>
                     </ul>
-                </li>
-                <li class="dropdown">
+                </li>-->
+                <!--<li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Работа с персоналом <i class="caret"></i></a>
                     <ul class="dropdown-menu">
                         <li><a>Сотрудники</a></li>
@@ -56,6 +56,30 @@
                         <li ui-sref-active="active"><a ui-sref="index.users">Пользователи системы</a></li>
                         <li role="separator" class="divider"></li>
                         <li ui-sref-active="active"><a ui-sref="index.services">Сервисы</a></li>
+                    </ul>
+                </li>-->
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        Статисеские страницы
+                        <i class="caret"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li ui-sref-active="active"><a ui-sref="index.static">Общий список</a></li>
+                        <li ui-sref-active="active"><a ui-sref="index.navigation">Навигация</a></li>
+                        <!--<li class="divider"></li>-->
+                        <!--<li ui-sref-active="active" ng-repeat="page in vm.staticPages"><a ui-sref="index.page({id: page.id})">{{page.title}}</a></li>-->
+                    </ul>
+                </li>
+
+                <li class="dropdown" ng-repeat="navigate in vm.navigations">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        {{navigate.title}}
+                        <i class="caret"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li ui-sref-active="active" ng-repeat="page in navigate.staticPageList">
+                            <a ui-sref="index.page({id: page.id})">{{page.title}}</a>
+                        </li>
                     </ul>
                 </li>
             </ul>

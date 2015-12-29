@@ -5,7 +5,8 @@ var less = require('gulp-less');
 
 var bower = {
     fonts: [
-        'bower_components/bootstrap/dist/fonts/**'
+        'bower_components/bootstrap/dist/fonts/**',
+        "bower_components/font-awesome/fonts/**"
     ],
     scripts: [
         'bower_components/angular/angular.js',
@@ -13,11 +14,15 @@ var bower = {
         'bower_components/angular-resource/angular-resource.js',
         'bower_components/angular-ui-router/release/angular-ui-router.js',
         'bower_components/jquery/dist/jquery.js',
-        'bower_components/bootstrap/dist/js/bootstrap.js'
+        'bower_components/bootstrap/dist/js/bootstrap.js',
+        "bower_components/angular-minieditor/angular-minieditor.js"
     ],
     styles: [
         'bower_components/bootstrap/dist/css/bootstrap.css',
-        'bower_components/bootswatch/cosmo/bootstrap.css'
+        'bower_components/bootswatch/cosmo/bootstrap.css',
+        "bower_components/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css",
+        "bower_components/font-awesome/css/font-awesome.css",
+        "bower_components/angular-minieditor/angular-minieditor.css"
     ]
 };
 
