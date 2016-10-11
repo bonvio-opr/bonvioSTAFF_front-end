@@ -15,9 +15,11 @@ angular.module("app").component("nkSearchForm", {
         buttonText: "@"
     },
     template: `
-    <form name="searchForm" novalidate ng-submit="$ctrl.ngChange({$value: $ctrl.ngModel})">
-        <input ng-model="$ctrl.ngModel" ng-model-options="{updateOn: 'blur'}">
-        <button type="submit">{{::$ctrl.buttonText}} {{$ctrl.ngModel}} {{::$ctrl.ngModel}}</button>
+    <form class="navbar-form navbar-left" role="search" name="searchForm" novalidate ng-submit="$ctrl.ngChange({$value: $ctrl.ngModel})">
+        <div class="form-group">
+            <input class="form-control" placeholder="Search" ng-model="$ctrl.ngModel" ng-model-options="{updateOn: 'blur'}">
+        </div>
+        <button class="btn btn-default" type="submit">{{::$ctrl.buttonText}} {{$ctrl.ngModel}} {{::$ctrl.ngModel}}</button>
     </form>
     `
 

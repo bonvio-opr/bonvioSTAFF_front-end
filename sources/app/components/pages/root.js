@@ -1,10 +1,10 @@
-angular.module("app").config(($stateProvider, $locationProvider) => {
+angular.module("app").config(($stateProvider) => {
     $stateProvider.state({
-        name: 'djopa',
+        name: 'root',
         url: "/",
-        template: require("./root.html")
+        component: "root"
     });
-    $locationProvider.html5Mode(true).hashPrefix("!");
-    console.log("hui");
+}).component("root", {
+    template: require("./root.html")
 });
 
