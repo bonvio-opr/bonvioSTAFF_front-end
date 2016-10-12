@@ -1,5 +1,20 @@
 
+<div class="container">
 
-<hr>
-<nk-search-form ng-change="$ctrl.func({value: $value})" ng-model="$ctrl.model" button-text="buttontext"></nk-search-form>
-<pre>{{$ctrl.model | json}}</pre>
+    <div class="clearfix">
+        <nk-search-form ng-change="$ctrl.func({value: $value})" ng-model="$ctrl.model" button-text="Search"></nk-search-form>
+    </div>
+    <div class="clearfix">
+        <pre>{{$ctrl.model | json}}</pre>
+    </div>
+
+    <ul class="list-group">
+        <li class="list-group-item">
+            <img class="img-circle" style="width: 100px" src="http://i034.radikal.ru/0806/42/78b66c4c8809.png">
+
+            <p class="panel-title">Cras justo odio</p>
+        </li>
+
+    </ul>
+
+</div>

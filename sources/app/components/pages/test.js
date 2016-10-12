@@ -10,6 +10,7 @@ angular.module("app").config(($stateProvider) => {
         this.func = value => {
             console.log(value);
         };
+        
     }
 });
 
