@@ -9,10 +9,9 @@
     </div>
 
     <ul class="list-group">
-        <li class="list-group-item">
-            <img class="img-circle" style="width: 100px" src="http://i034.radikal.ru/0806/42/78b66c4c8809.png">
-
-            <p class="panel-title">Cras justo odio</p>
+        <li ng-repeat="phone in $ctrl.phones">
+            <span>{{phone.name}}</span>
+            <p>{{phone.snippet}}</p>
         </li>
 
     </ul>

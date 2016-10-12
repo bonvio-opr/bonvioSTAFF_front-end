@@ -7,6 +7,18 @@ angular.module("app").config(($stateProvider) => {
 }).component('test', {
     template: require("./test.html"),
     controller: function () {
+
+        this.phones = [
+            {
+                name: "ggg",
+                snippet: "ggg"
+            },
+            {
+                name: "ggg1",
+                snippet: "ggg1"
+            }
+        ];
+
         this.func = value => {
             console.log(value);
         };
