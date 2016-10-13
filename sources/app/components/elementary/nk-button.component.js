@@ -2,7 +2,7 @@
  * Created by mil on 07.09.16.
  * 
  * @ngdoc component
- * @name nkSearchForm
+ * @name nkButton
  * @param ngModel
  * @param ngChange
  * @param buttonText

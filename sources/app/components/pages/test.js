@@ -6,23 +6,20 @@ angular.module("app").config(($stateProvider) => {
     });
 }).component('test', {
     template: require("./test.html"),
-    controller: function () {
+    controller: function ($http) {
 
-        this.phones = [
-            {
-                name: "ggg",
-                snippet: "ggg"
-            },
-            {
-                name: "ggg1",
-                snippet: "ggg1"
-            }
-        ];
+        $http.get('/_data/phones/phones.json').then(response => {
+            this.phones = response.data;
+        });
 
         this.func = value => {
             console.log(value);
         };
-        
+
+        this.open = () => {
+            console.log("ffffF");
+        }
+
     }
 });
 

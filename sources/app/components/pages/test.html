@@ -1,21 +1,43 @@
 
 <div class="container">
 
-    <div class="clearfix">
-        <nk-search-form ng-change="$ctrl.func({value: $value})" ng-model="$ctrl.model" button-text="Search"></nk-search-form>
+    <h1>Components</h1>
+    <p>Over a dozen reusable components built to provide iconography, dropdowns, input groups, navigation, alerts, and much more.</p>
+
+    <hr>
+
+    <blockquote>
+        <p>Component Button</p>
+    </blockquote>
+    <nk-button button-text="name"></nk-button>
+
+    <hr>
+
+    <blockquote>
+        <p>Component Search Form</p>
+    </blockquote>
+    <div class="row">
+        <div class="col-xs-4">
+            <div class="clearfix">
+                <nk-search-form ng-change="$ctrl.func({value: $value})" ng-model="$ctrl.model" button-text="Search"></nk-search-form>
+            </div>
+        </div>
+        <div class="col-xs-8">
+            <div class="clearfix">
+                <pre ng-if="$ctrl.model">{{$ctrl.model | json}}</pre>
+            </div>
+        </div>
     </div>
-    <div class="clearfix">
-        <pre>{{$ctrl.model | json}}</pre>
-    </div>
 
-    <ul class="list-group">
-        <li ng-repeat="phone in $ctrl.phones">
-            <span>{{phone.name}}</span>
-            <p>{{phone.snippet}}</p>
-        </li>
+    <hr>
 
-    </ul>
+    <blockquote>
+        <p>Component List</p>
+    </blockquote>
+    <nk-list list="$ctrl.phones" img-prop="{src: 'imageUrl', width: '200', height: ''}"></nk-list>
 
-    <nk-list items="$ctrl.phones"></nk-list>
+    <button type="button" class="btn btn-default" ng-click="$ctrl.open()">Open me!</button>
+
+    <nk-modal></nk-modal>
 
 </div>
