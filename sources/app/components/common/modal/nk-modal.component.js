@@ -2,10 +2,10 @@
  * Created by mil on 07.09.16.
  * 
  * @ngdoc component
- * @name nkSearchForm
- * @param ngModel
- * @param ngChange
- * @param buttonText
+ * @name nkModal
+ * @param resolve
+ * @param close
+ * @param dismiss
  */
 
 angular.module("app").component("nkModal", {
@@ -16,11 +16,14 @@ angular.module("app").component("nkModal", {
     },
     template: require('./nk-modal.component.html'),
     controller : function () {
+        this.hui = this.resolve.a;
+
         var $ctrl = this;
 
         $ctrl.ok = function (value) {
-            $ctrl.close({$value: '123'});
-        };
+            this.hui.$save();
+            // $ctrl.close({$value: value});
+        }.bind(this);
 
         $ctrl.cancel = function () {
             $ctrl.dismiss({$value: 'cancel'});

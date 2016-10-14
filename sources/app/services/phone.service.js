@@ -1,0 +1,1 @@
+angular.module("app").factory('Phone', $resource => $resource('_data/phones/:id.json', {id: '@id'}));

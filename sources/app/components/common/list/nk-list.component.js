@@ -8,7 +8,9 @@
  * @param buttonText
  */
 
-angular.module("app").component("nkList", {
+angular
+    .module("app")
+    .component("nkList", {
     bindings: {
         list: "=",
         imgProp: "="
@@ -17,7 +19,7 @@ angular.module("app").component("nkList", {
     <ul class="list-group">
         <li class="list-group-item" ng-repeat="itemList in $ctrl.list">
             <div class="panel panel-default">
-                <div class="panel-heading">Item #{{$index}}</div>
+                <div class="panel-heading"><span ng-click="$ctrl.openComponentModal(itemList)">Item #{{$index}}</span></div>
                 <div class="panel-body">
                     <p><pre>{{itemList | json}}</pre></p>
                 </div>
@@ -32,7 +34,18 @@ angular.module("app").component("nkList", {
         </li>
     </ul>
     `,
-    controller : function () {
+    controller : function ($http, $uibModal) {
+        this.openComponentModal = (obj) => {
+            $uibModal.open({
+                component: 'nkModal',
+                resolve: {
+                    //a: () => ($http.get('/_data/phones/' + obj.id + '.json'))
+                    a: (Phone) => Phone.get({id: obj.id}).$promise
+                }
+            }).result.then(value => {
+                console.log(value);
+            })
+        };
     }
 
 });

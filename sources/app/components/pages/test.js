@@ -8,8 +8,8 @@ angular.module("app").config(($stateProvider) => {
     template: require("./test.html"),
     controller: function ($http, $uibModal) {
 
-        $http.get('/_data/phones/phones.json').then(response => {
-            this.phones = response.data;
+        $http.get('/_data/phones/phones.json').then(phones => {
+            this.phones = phones.data;
         });
 
         this.func = value => {
