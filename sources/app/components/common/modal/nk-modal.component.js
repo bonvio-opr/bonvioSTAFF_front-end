@@ -10,11 +10,21 @@
 
 angular.module("app").component("nkModal", {
     bindings: {
-        data: "=",
-        settings: "="
+        resolve: '<',
+        close: '&',
+        dismiss: '&'
     },
     template: require('./nk-modal.component.html'),
     controller : function () {
+        var $ctrl = this;
+
+        $ctrl.ok = function (value) {
+            $ctrl.close({$value: '123'});
+        };
+
+        $ctrl.cancel = function () {
+            $ctrl.dismiss({$value: 'cancel'});
+        };
     }
 
 });

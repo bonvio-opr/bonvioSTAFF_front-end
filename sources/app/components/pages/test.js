@@ -6,7 +6,7 @@ angular.module("app").config(($stateProvider) => {
     });
 }).component('test', {
     template: require("./test.html"),
-    controller: function ($http) {
+    controller: function ($http, $uibModal) {
 
         $http.get('/_data/phones/phones.json').then(response => {
             this.phones = response.data;
@@ -16,9 +16,19 @@ angular.module("app").config(($stateProvider) => {
             console.log(value);
         };
 
-        this.open = () => {
-            console.log("ffffF");
-        }
+        this.openComponentModal = () => {
+            $uibModal.open({
+                component: 'nkModal',
+                animation: 'false'
+            }).result.then(value => {
+                console.log(value);
+            })
+        };
+
+        this.animationsEnabled = false;
+        this.toggleAnimation = function () {
+            this.animationsEnabled = !this.animationsEnabled;
+        };
 
     }
 });

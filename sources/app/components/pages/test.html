@@ -36,8 +36,7 @@
     </blockquote>
     <nk-list list="$ctrl.phones" img-prop="{src: 'imageUrl', width: '200', height: ''}"></nk-list>
 
-    <button type="button" class="btn btn-default" ng-click="$ctrl.open()">Open me!</button>
-
-    <nk-modal></nk-modal>
+    <button type="button" class="btn btn-default" ng-click="$ctrl.toggleAnimation()">Toggle Animation ({{ $ctrl.animationsEnabled }})</button>
+    <button type="button" class="btn btn-default" ng-click="$ctrl.openComponentModal()">openComponentModal</button>
 
 </div>
