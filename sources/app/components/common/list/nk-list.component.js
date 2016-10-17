@@ -34,13 +34,13 @@ angular
         </li>
     </ul>
     `,
-    controller : function ($http, $uibModal) {
+    controller : function ($uibModal) {
         this.openComponentModal = (obj) => {
             $uibModal.open({
                 component: 'nkModal',
                 resolve: {
                     //a: () => ($http.get('/_data/phones/' + obj.id + '.json'))
-                    a: (Phone) => Phone.get({id: obj.id}).$promise
+                    a: Phone => Phone.get({id: obj.id}).$promise
                 }
             }).result.then(value => {
                 console.log(value);

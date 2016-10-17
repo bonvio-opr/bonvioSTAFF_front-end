@@ -21,8 +21,8 @@ angular.module("app").component("nkModal", {
         var $ctrl = this;
 
         $ctrl.ok = function (value) {
-            this.hui.$save();
-            // $ctrl.close({$value: value});
+            //this.hui.$save();
+            $ctrl.close({$value: value});
         }.bind(this);
 
         $ctrl.cancel = function () {
