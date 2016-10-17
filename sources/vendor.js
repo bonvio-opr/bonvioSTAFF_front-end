@@ -7,3 +7,4 @@ require("angular-ui-router");
 require("angular-bootstrap");
 require('angular-resource');
 
+require('angular-cookies');
