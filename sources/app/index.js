@@ -12,13 +12,20 @@ angular
         }
 
     })
-    .run((authService, $state, $cookies) => {
-        authService.check().then((res) => {
-            $cookies.putObject('currentUser', res.data);
-        }).catch((res) => {
-            $cookies.remove('currentUser');
-            $state.go('auth');
-        });
+    .run((authService, $state, $cookies, $transitions) => {
+
+        let currentUser = null;
+
+        authService.check().catch(() => $state.go('auth'));
+
+        $transitions.onBefore({}, () => currentUser = $cookies.getObject('currentUser'));
+
+        $transitions.onStart({to: 'index.*'}, () => !!currentUser);
+        $transitions.onError({to: 'index.*'}, () => $state.go('auth'));
+
+        $transitions.onStart({to: 'auth'}, () => !currentUser);
+        $transitions.onError({to: 'auth'}, () => $state.go('auth'));
+
     });
 
 window.requireAll = requireContext => requireContext.keys().map(requireContext);

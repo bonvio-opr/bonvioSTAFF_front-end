@@ -53,6 +53,10 @@ var webpackConfig = {
             {
                 test: /\.(html|htm)$/,
                 loader: "html"
+            },
+            {
+                test: /angular\.js$/,
+                loader: 'exports?angular'
             }
 
         ]

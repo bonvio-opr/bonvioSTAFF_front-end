@@ -1,6 +1,6 @@
 angular.module("app").config(($stateProvider) => {
     $stateProvider.state({
-        name: 'test',
+        name: 'index.test',
         url: "/test",
         component: 'test',
         resolve: {
