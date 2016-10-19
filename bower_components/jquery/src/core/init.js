@@ -8,7 +8,7 @@ define( [
 
 "use strict";
 
-// A central reference to the root jQuery(document)
+// A central reference to the index-page jQuery(document)
 var rootjQuery,
 
 	// A simple way to check for HTML strings

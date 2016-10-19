@@ -2,16 +2,16 @@ angular.module("app").config(($stateProvider) => {
     $stateProvider.state({
         name: 'index.test',
         url: "/test",
-        component: 'test',
+        component: 'testPage',
         resolve: {
             phones: Phone => Phone.query({id: 'phones'}).$promise
         }
     });
-}).component('test', {
+}).component('testPage', {
     bindings: {
         phones: '<'
     },
-    template: require("./test.html"),
+    template: require("./test-page.component.html"),
     controller: function ($uibModal, Phone) {
         console.log(this.phones);
 

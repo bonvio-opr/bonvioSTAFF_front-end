@@ -2,10 +2,10 @@ angular.module("app").config(($stateProvider) => {
     $stateProvider.state({
         name: 'auth',
         url: "/auth",
-        component: 'auth'
+        component: 'authPage'
     });
-}).component('auth', {
-    template: require("./auth.html"),
+}).component('authPage', {
+    template: require("./auth-page.component.html"),
     controller: function (authService) {
         
         this.signin = (user) => {

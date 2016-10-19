@@ -15,7 +15,7 @@ function addGetHookIf( conditionFn, hookFn ) {
 				return;
 			}
 
-			// Hook needed; redefine it so that the support test is not executed again.
+			// Hook needed; redefine it so that the support test-page is not executed again.
 			return ( this.get = hookFn ).apply( this, arguments );
 		}
 	};

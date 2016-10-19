@@ -2,10 +2,9 @@ angular.module("app").config(($stateProvider) => {
     $stateProvider.state({
         name: 'index',
         url: "/index",
-        component: "root"
+        component: "indexPage"
     });
-    console.log('hui');
-}).component("root", {
-    template: require("./root.html")
+}).component("indexPage", {
+    template: require("./index-page.component.html")
 });
 

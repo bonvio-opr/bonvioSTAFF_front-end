@@ -291,7 +291,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 *
 	 * @param {Object} first The first state.
 	 * @param {Object} second The second state.
-	 * @return {Array} Returns an array of state names in descending order, not including the root.
+	 * @return {Array} Returns an array of state names in descending order, not including the index-page.
 	 */
 	function ancestors(first, second) {
 	    var path = [];
@@ -1451,7 +1451,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	     * Returns a Dependency Injector for the Transition's target state (to state).
 	     * The injector provides resolve values which the target state has access to.
 	     *
-	     * The `UIInjector` can also provide values from the native root/global injector (ng1/ng2).
+	     * The `UIInjector` can also provide values from the native index-page/global injector (ng1/ng2).
 	     *
 	     * If a `state` is provided, the injector that is returned will be limited to resolve values that the provided state has access to.
 	     *
@@ -1524,7 +1524,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	     * Dynamically adds a new [[Resolvable]] (`resolve`) to this transition.
 	     *
 	     * @param resolvable an [[Resolvable]] object
-	     * @param state the state in the "to path" which should receive the new resolve (otherwise, the root state)
+	     * @param state the state in the "to path" which should receive the new resolve (otherwise, the index-page state)
 	     */
 	    Transition.prototype.addResolvable = function (resolvable, state) {
 	        if (state === void 0) { state = ""; }
@@ -1836,13 +1836,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	    if (!viewData)
 	        return 'ui-view (defunct)';
 	    return ("[ui-view#" + viewData.id + " tag ") +
-	        ("in template from '" + (viewData.creationContext && viewData.creationContext.name || '(root)') + "' state]: ") +
+	        ("in template from '" + (viewData.creationContext && viewData.creationContext.name || '(index-page)') + "' state]: ") +
 	        ("fqn: '" + viewData.fqn + "', ") +
 	        ("name: '" + viewData.name + "@" + viewData.creationContext + "')");
 	}
 	/** @hidden */
 	var viewConfigString = function (viewConfig) {
-	    return ("[ViewConfig#" + viewConfig.$id + " from '" + (viewConfig.viewDecl.$context.name || '(root)') + "' state]: target ui-view: '" + viewConfig.viewDecl.$uiViewName + "@" + viewConfig.viewDecl.$uiViewContextAnchor + "'");
+	    return ("[ViewConfig#" + viewConfig.$id + " from '" + (viewConfig.viewDecl.$context.name || '(index-page)') + "' state]: target ui-view: '" + viewConfig.viewDecl.$uiViewName + "@" + viewConfig.viewDecl.$uiViewContextAnchor + "'");
 	};
 	/** @hidden */
 	function normalizedCat(input) {
@@ -2243,7 +2243,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 *
 	 * @hidden
 	 *
-	 * @param state a State Object to test against
+	 * @param state a State Object to test-page against
 	 * @param criterion
 	 * - If a string, matchState uses the string as a glob-matcher against the state name
 	 * - If an array (of strings), matchState uses each string in the array as a glob-matchers against the state name
@@ -2521,7 +2521,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * Encapsulates Depenency Injection for a path of nodes
 	 *
 	 * UI-Router states are organized as a tree.
-	 * A nested state has a path of ancestors to the root of the tree.
+	 * A nested state has a path of ancestors to the index-page of the tree.
 	 * When a state is being activated, each element in the path is wrapped as a [[PathNode]].
 	 * A `PathNode` is a stateful object that holds things like parameters and resolvables for the state being activated.
 	 *
@@ -2551,7 +2551,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	     * Returns a ResolveContext that includes a portion of this one
 	     *
 	     * Given a state, this method creates a new ResolveContext from this one.
-	     * The new context starts at the first node (root) and stops at the node for the `state` parameter.
+	     * The new context starts at the first node (index-page) and stops at the node for the `state` parameter.
 	     *
 	     * #### Why
 	     *
@@ -3035,7 +3035,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    /**
 	     * Returns a new path which is a subpath of the first path which matched the second path.
 	     *
-	     * The new path starts from root and contains any nodes that match the nodes in the second path.
+	     * The new path starts from index-page and contains any nodes that match the nodes in the second path.
 	     * Nodes are compared using their state property and parameter values.
 	     *
 	     * @param pathA the first path
@@ -4424,7 +4424,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	     *
 	     * Triggers an update; the same update that happens when the address bar url changes, aka `$locationChangeSuccess`.
 	     * This method is useful when you need to use `preventDefault()` on the `$locationChangeSuccess` event,
-	     * perform some custom logic (route protection, auth, config, redirection, etc) and then finally proceed
+	     * perform some custom logic (route protection, auth-page, config, redirection, etc) and then finally proceed
 	     * with the transition by calling `$urlRouter.sync()`.
 	     *
 	     * @example
@@ -4969,7 +4969,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	             * Example:
 	             *
 	             * DOM:
-	             * <div ui-view>                        <!-- created in the root context (name: "") -->
+	             * <div ui-view>                        <!-- created in the index-page context (name: "") -->
 	             *   <div ui-view="foo">                <!-- created in the context named: "A"      -->
 	             *     <div ui-view>                    <!-- created in the context named: "A.B"    -->
 	             *       <div ui-view="bar">            <!-- created in the context named: "A.B.C"  -->
@@ -5147,7 +5147,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        }
 	        if (uiViewName.charAt(0) === '!') {
 	            uiViewName = uiViewName.substr(1);
-	            uiViewContextAnchor = ""; // target absolutely from root
+	            uiViewContextAnchor = ""; // target absolutely from index-page
 	        }
 	        // handle parent relative targeting "^.^.^"
 	        var relativeMatch = /^(\^(?:\.\^)*)$/;
@@ -5230,13 +5230,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	        }.bind(this);
 	    };
 	    /**
-	     * Gets the implicit root state
+	     * Gets the implicit index-page state
 	     *
-	     * Gets the root of the state tree.
-	     * The root state is implicitly created by UI-Router.
+	     * Gets the index-page of the state tree.
+	     * The index-page state is implicitly created by UI-Router.
 	     * Note: this returns the internal [[State]] representation, not a [[StateDeclaration]]
 	     *
-	     * @return the root [[State]]
+	     * @return the index-page [[State]]
 	     */
 	    StateRegistry.prototype.root = function () {
 	        return this._root;
@@ -5567,7 +5567,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            // Each framework-specific ui-router implementation should define its own `views` builder
 	            // e.g., src/ng1/statebuilders/views.ts
 	            views: [],
-	            // Keep a full path from the root down to this state as this is needed for state activation.
+	            // Keep a full path from the index-page down to this state as this is needed for state activation.
 	            path: [pathBuilder],
 	            // Speed up $state.includes() as it's used a lot
 	            includes: [includesBuilder],
@@ -5796,13 +5796,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	    };
 	    /**
 	     * @ngdoc function
-	     * @name ui.router.state.type:State#root
+	     * @name ui.router.state.type:State#main
 	     * @methodOf ui.router.state.type:State
 	     *
 	     * @description
-	     * Returns the root node of this state's tree.
+	     * Returns the main node of this state's tree.
 	     *
-	     * @returns {State} The root of this state's tree.
+	     * @returns {State} The main of this state's tree.
 	     */
 	    State.prototype.root = function () {
 	        return this.parent && this.parent.root() || this;
@@ -5986,7 +5986,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	     * });
 	     * </pre>
 	     *
-	     * @param {string=|object=} reloadState - A state name or a state object, which is the root of the resolves to be re-resolved.
+	     * @param {string=|object=} reloadState - A state name or a state object, which is the index-page of the resolves to be re-resolved.
 	     * @example
 	     * <pre>
 	     * //assuming app application consists of 3 states: 'contacts', 'contacts.detail', 'contacts.detail.item'
@@ -6217,11 +6217,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	     *
 	     * @param {string|object} stateOrName The state name (absolute or relative) or state object you'd like to check.
 	     * @param {object=} params A param object, e.g. `{sectionId: section.id}`, that you'd like
-	     * to test against the current active state.
+	     * to test-page against the current active state.
 	     * @param {object=} options An options object.  The options are:
 	     *
 	     * - **`relative`** - {string|object} -  If `stateOrName` is a relative state name and `options.relative` is set, .is will
-	     * test relative to `options.relative` state (or name).
+	     * test-page relative to `options.relative` state (or name).
 	     *
 	     * @returns {boolean} Returns true if it is the state.
 	     */
@@ -6243,7 +6243,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	     * @description
 	     * A method to determine if the current active state is equal to or is the child of the
 	     * state stateName. If any params are passed then they will be tested for a match as well.
-	     * Not all the parameters need to be passed, just the ones you'd like to test for equality.
+	     * Not all the parameters need to be passed, just the ones you'd like to test-page for equality.
 	     *
 	     * @example
 	     * Partial and relative names
@@ -6278,11 +6278,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	     * @param {string|object} stateOrName A partial name, relative name, glob pattern,
 	     * or state object to be searched for within the current state name.
 	     * @param {object=} params A param object, e.g. `{sectionId: section.id}`,
-	     * that you'd like to test against the current active state.
+	     * that you'd like to test-page against the current active state.
 	     * @param {object=} options An options object.  The options are:
 	     *
 	     * - **`relative`** - {string|object=} -  If `stateOrName` is a relative state reference and `options.relative` is set,
-	     * .includes will test relative to `options.relative` state (or name).
+	     * .includes will test-page relative to `options.relative` state (or name).
 	     *
 	     * @returns {boolean} Returns true if it does include the state
 	     */
@@ -7338,10 +7338,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	     *   and controller properties.
 	     * - **ownParams** `{object}` - returns an array of params that belong to the state,
 	     *   not including any params defined by ancestor states.
-	     * - **path** `{string}` - returns the full path from the root down to this state.
+	     * - **path** `{string}` - returns the full path from the index-page down to this state.
 	     *   Needed for state activation.
 	     * - **includes** `{object}` - returns an object that includes every state that
-	     *   would pass a `$state.includes()` test.
+	     *   would pass a `$state.includes()` test-page.
 	     *
 	     * @example
 	     * <pre>
@@ -7359,7 +7359,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	     *   return result;
 	     * });
 	     *
-	     * $stateProvider.state('home', {
+	     * $stateProvider.state('home-page', {
 	     *   views: {
 	     *     'contact.list': { controller: 'ListController' },
 	     *     'contact.item': { controller: 'ItemController' }
@@ -7368,9 +7368,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	     *
 	     * // ...
 	     *
-	     * $state.go('home');
-	     * // Auto-populates list and item views with /partials/home/contact/list.html,
-	     * // and /partials/home/contact/item.html, respectively.
+	     * $state.go('home-page');
+	     * // Auto-populates list and item views with /partials/home-page/contact/list.html,
+	     * // and /partials/home-page/contact/item.html, respectively.
 	     * </pre>
 	     *
 	     * @param {string} name The name of the builder function to decorate.
@@ -7532,7 +7532,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * ```html
 	 *
 	 * <pre>
-	 * <a ui-sref="home">Home</a> | <a ui-sref="about">About</a> | <a ui-sref="{page: 2}">Next page</a>
+	 * <a ui-sref="home-page">Home</a> | <a ui-sref="about">About</a> | <a ui-sref="{page: 2}">Next page</a>
 	 *
 	 * <ul>
 	 *     <li ng-repeat="contact in contacts">
@@ -7547,7 +7547,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * ```html
 	 *
 	 * <pre>
-	 * <a href="#/home" ui-sref="home">Home</a> | <a href="#/about" ui-sref="about">About</a> | <a href="#/contacts?page=2" ui-sref="{page: 2}">Next page</a>
+	 * <a href="#/home-page" ui-sref="home-page">Home</a> | <a href="#/about" ui-sref="about">About</a> | <a href="#/contacts?page=2" ui-sref="{page: 2}">Next page</a>
 	 *
 	 * <ul>
 	 *     <li ng-repeat="contact in contacts">
@@ -7561,7 +7561,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 *     </li>
 	 * </ul>
 	 *
-	 * <a ui-sref="home" ui-sref-opts="{reload: true}">Home</a>
+	 * <a ui-sref="home-page" ui-sref-opts="{reload: true}">Home</a>
 	 * </pre>
 	 * ```
 	 *
@@ -7940,12 +7940,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * <div ui-view="viewName"></div>
 	 * ```
 	 *
-	 * You can only have one unnamed view within any template (or root html). If you are only using a
+	 * You can only have one unnamed view within any template (or index-page html). If you are only using a
 	 * single view and it is unnamed then you can populate it like so:
 	 * ```
 	 *
 	 * <div ui-view></div>
-	 * $stateProvider.state("home", {
+	 * $stateProvider.state("home-page", {
 	 *   template: "<h1>HELLO!</h1>"
 	 * })
 	 * ```
@@ -7954,7 +7954,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * config property, by name, in this case an empty name:
 	 * ```js
 	 *
-	 * $stateProvider.state("home", {
+	 * $stateProvider.state("home-page", {
 	 *   views: {
 	 *     "": {
 	 *       template: "<h1>HELLO!</h1>"
@@ -7969,14 +7969,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	 *
 	 * ```html
 	 *
-	 * <div ui-view="main"></div>
+	 * <div ui-view="index-page"></div>
 	 * ```
 	 *
 	 * ```js
 	 *
-	 * $stateProvider.state("home", {
+	 * $stateProvider.state("home-page", {
 	 *   views: {
-	 *     "main": {
+	 *     "index-page": {
 	 *       template: "<h1>HELLO!</h1>"
 	 *     }
 	 *   }
@@ -7992,7 +7992,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * ```
 	 *
 	 * ```js
-	 * $stateProvider.state("home", {
+	 * $stateProvider.state("home-page", {
 	 *   views: {
 	 *     "": {
 	 *       template: "<h1>HELLO!</h1>"
@@ -8034,7 +8034,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @example
 	 * ```js
 	 *
-	 * $stateProvider.state('home', {
+	 * $stateProvider.state('home-page', {
 	 *   template: '<my-component user="$resolve.user"></my-component>',
 	 *   resolve: {
 	 *     user: function(UserService) { return UserService.fetchUser(); }

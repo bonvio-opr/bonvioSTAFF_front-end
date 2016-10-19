@@ -24,7 +24,7 @@ angular
         $transitions.onError({to: 'index.*'}, () => $state.go('auth'));
 
         $transitions.onStart({to: 'auth'}, () => !currentUser);
-        $transitions.onError({to: 'auth'}, () => $state.go('auth'));
+        $transitions.onError({to: 'auth'}, () => $state.go('index'));
 
     });
 
