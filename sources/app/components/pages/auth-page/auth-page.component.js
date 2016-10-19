@@ -6,12 +6,13 @@ angular.module("app").config(($stateProvider) => {
     });
 }).component('authPage', {
     template: require("./auth-page.component.html"),
-    controller: function (authService) {
+    controller: function (authService, $state) {
         
         this.signin = (user) => {
             console.log(user);
             authService.signin(user).then((res) => {
                 console.log(res);
+                $state.go('index');
             }).catch((res) => {
                 console.log(res);
             });
@@ -21,6 +22,7 @@ angular.module("app").config(($stateProvider) => {
             console.log(user);
             authService.signup(user).then((res) => {
                 console.log(res);
+                $state.go('index');
             }).catch((res) => {
                 console.log(res);
             });

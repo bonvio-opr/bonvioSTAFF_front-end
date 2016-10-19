@@ -8,3 +8,5 @@ require("angular-bootstrap");
 require('angular-resource');
 
 require('angular-cookies');
+
+require('bootswatch/slate/bootstrap.css');

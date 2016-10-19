@@ -4,12 +4,12 @@ angular.module("app").config(($stateProvider) => {
         url: "/test",
         component: 'testPage',
         resolve: {
-            phones: Phone => Phone.query({id: 'phones'}).$promise
+            //phones: Phone => Phone.query({id: 'phones'}).$promise
         }
     });
 }).component('testPage', {
     bindings: {
-        phones: '<'
+        //phones: '<'
     },
     template: require("./test-page.component.html"),
     controller: function ($uibModal, Phone) {

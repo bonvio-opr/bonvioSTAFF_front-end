@@ -5,6 +5,17 @@ angular.module("app").config(($stateProvider) => {
         component: "indexPage"
     });
 }).component("indexPage", {
-    template: require("./index-page.component.html")
+    template: require("./index-page.component.html"),
+    controller: function (authService, $state) {
+        this.signout = () => {
+            authService.signout().then((res) => {
+                $state.go('auth');
+                console.log(res);
+            }).catch((res) => {
+                console.log(res);
+            });
+
+        }
+    }
 });
 
