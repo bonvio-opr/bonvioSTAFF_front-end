@@ -4,8 +4,6 @@
  
 staffApp.controller('projectsController', function($scope, $http) {
 
-	getProjects();
-
 	function getProjects(){
 
 		$http.post("./core/getProject.php").success(function(data){
@@ -16,12 +14,31 @@ staffApp.controller('projectsController', function($scope, $http) {
 		});
 	}
 
+	getProjects();
+
 	$scope.delProject = function(id){
-		console.log(id);
-		/*$http.get('./core/delProject.php/?id='+id+'').success(function ( responce ) {
+
+		$http.get('./core/delProject.php/?id='+id+'').success(function ( responce ) {
 			console.log(responce);
-			getCustomers();
-		});*/
-	}
+			getProjects();
+		});
+	};
+
+	/*$scope.vm.prepare = function (project) {
+		$scope.vm.modalTitle = project ? 'Изменение профиля: '+project.title : 'Новый профиль';
+	};*/
+
+	//$scope.vm.control = 'create';
+
+	/*$scope.vm.create = function() {
+		/!*$http.post('./core/addProject.php', {"title" : $scope.vm.project.title}).success(function ( responce ) {
+			console.log(responce);
+			getProjects();
+		});*!/
+
+		/!*console.log({"login" : $scope.vm.user.login});
+		console.log($scope.vm.user);*!/
+		console.log("create");
+	};*/
 
 });

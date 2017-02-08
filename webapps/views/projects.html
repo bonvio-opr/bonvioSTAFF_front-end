@@ -1,52 +1,84 @@
-<table class="table" ng-controller="projectsController">
+<div class="container">
 
-<thead>
-	<tr>
-		<th>Title</th>
-		<th>App Type</th>
-		<th>Code</th>
-		<th>Type</th>
-		<th></th>
-	</tr>
-</thead>
+    <p>
+        <button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#projectModal"
+                data-ng-click="vm.prepare()">
+            <i class="glyphicon glyphicon-plus"></i>
+            Добавить
+        </button>
+    </p>
 
-<tbody>
-<tr ng-repeat="project in projects">
+    <div class="modal fade" id="projectModal" tabindex="-1" role="dialog" aria-labelledby="projectModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title" id="serverModalLabel">{{vm.modalTitle}}</h4>
+                </div>
+                <div class="modal-body">
+                    <form novalidate name="projectForm">
+                        <div class="form-group has-feedback"
+                             data-ng-class="projectForm.title.$error.required ? 'has-error' : 'has-success'">
+                            <label for="title" class="control-label">title</label>
+                            <input type="text" id="title" name="title" class="form-control" data-ng-model="vm.project.title"
+                                   required>
+                        <span class="glyphicon form-control-feedback" aria-hidden="true"
+                              data-ng-class="projectForm.title.$error.required ? 'glyphicon-remove' : 'glyphicon-ok'"></span>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <!--<button class="btn btn-danger" data-toggle="modal" data-target="#removeModal"
+                                        data-ng-show="vm.control == 'update'"
+                                        data-ng-click="vm.prepare(vm.project)">
+                        <i class="glyphicon glyphicon-trash"></i>
+                    </button>-->
+                    <button class="btn btn-default" data-dismiss="modal">Закрыть</button>
+                    <button class="btn btn-primary" data-dismiss="modal"
+                            data-ng-disabled="projectForm.$invalid"
+                            data-ng-click="vm.control == 'create' ? vm.create() : vm.update()">
+                        Сохранить
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
 
-	<td>{{project.title}}</td>
+    <table class="table" ng-controller="projectsController">
 
-	<td>{{project.type}}</td>
+        <thead>
+        <tr>
+            <th>Title</th>
+            <th></th>
+        </tr>
+        </thead>
 
-	<td>{{project.pcode}}</td>
+        <tbody>
+        <tr ng-repeat="project in projects">
 
-	<td> 
-		<div ng-if="project.proj_type == 'Internal'"> 
-			<span class="label label-primary">{{project.proj_type}}</span> 
-		</div> 
-		<div ng-if="project.proj_type == 'External'"> 
-			<span class="label label-info">{{project.proj_type}}</span> 
-		</div> 
-	</td>
+            <td>{{project.title}}</td>
 
-	<td>
-		<button type="button"
-				class="btn btn-link"
-				data-toggle="modal"
-				data-target="#projectModal"
-				data-ng-click="vm.prepare(project)">
-			<i class="glyphicon glyphicon-edit"></i>
-		</button>
-		<button type="button"
-				class="btn btn-link"
-				data-toggle="modal"
-				data-target="#projectModal"
-				data-ng-click="delProject(project.id)">
-			<i class="glyphicon glyphicon-trash"></i>
-		</button>
-	</td>
+            	<td>
+                    <button type="button"
+                            class="btn btn-link"
+                            data-toggle="modal"
+                            data-target="#projectModal"
+                            data-ng-click="vm.prepare(project)">
+                        <i class="glyphicon glyphicon-edit"></i>
+                    </button>
+                    <button type="button"
+                            class="btn btn-link"
+                            data-ng-click="delProject(project.id)">
+                        <i class="glyphicon glyphicon-trash"></i>
+                    </button>
+                </td>
 
-</tr>
+        </tr>
 
-</tbody>
+        </tbody>
 
-</table>
+    </table>
+
+</div>

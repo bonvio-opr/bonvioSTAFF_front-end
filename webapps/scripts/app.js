@@ -14,7 +14,8 @@ staffApp.config(['$routeProvider',
       controller: 'interviewsController'
     }).
     when('/projects', {
-      templateUrl: '/webapps/views/projects.html'
+      templateUrl: '/webapps/views/projects.html',
+      controller: 'projectsController'
     }).
     when('/services', {
       templateUrl: '/webapps/views/services.html'

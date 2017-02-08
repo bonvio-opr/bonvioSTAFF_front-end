@@ -11,9 +11,9 @@
 
 
 // CONNECT TO THE DATABASE
-	$DB_NAME = 'cms';
-	$DB_HOST = 'localhost';
-	$DB_USER = 'external';
+	$DB_NAME = 'antondtl_test';
+	$DB_HOST = 'antondtl.beget.tech';
+	$DB_USER = 'antondtl_test';
 	$DB_PASS = 'y3l0l3k0r';
 
 	$mysqli = new mysqli($DB_HOST, $DB_USER, $DB_PASS, $DB_NAME);

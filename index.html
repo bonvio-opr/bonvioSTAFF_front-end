@@ -35,61 +35,26 @@
 <div class="container-fluid">
 
     <nav class="navbar navbar-default navbar-fixed-top">
-        <div class="container-fluid">
+        <div class="container">
             <div class="navbar-header">
                 <a class="navbar-brand" href="#/">
                     <!--<img alt="Brand" src="vendor/img/favicon.gif">-->
-                    STAFF "bonvio.com"
+                    STAFF
                 </a>
                 <ul class="nav navbar-nav">
 
-                    <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Опросы <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#interviews">Ответы по опросу "Автоматизация производства"</a></li>
-                        </ul>
-                    </li>
-
-                    <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">CRM <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#projects">Проекты</a></li>
-                            <li class="disabled"><a href="#">Задачи</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li class="disabled"><a href="#">Компании</a></li>
-                            <li class="disabled"><a href="#">Контакты</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li class="disabled"><a href="#">Отчеты</a></li>
-                        </ul>
-                    </li>
-
-                    <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Администрирование <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#services">Сервисы</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="#users">Пользователи</a></li>
-                            <li class="disabled"><a href="#">Сотрудники</a></li>
-                            <li class="disabled"><a href="#">Отделы</a></li>
-                        </ul>
-                    </li>
+                    <li><a href="#projects">Проекты</a></li>
+                    <li><a href="#main">main</a></li>
 
                 </ul>
             </div>
-            <ul class="nav navbar-nav navbar-right">
-                <li class="disabled"><a href="#">Вход</a></li>
-                <li class="disabled"><a href="#">Регистрация</a></li>
-            </ul>
+
         </div>
     </nav>
-    <!--
-        <div ng-include src="'projects.html'"></div>
-
-        <div ng-include src="'services.html'"></div>
-    -->
 
 </div>
-<div class="container">
+
+<div class="container-fluid">
     <div ng-view></div>
 </div>
 

@@ -3,7 +3,7 @@
 // CONNECT TO THE DATABASE
 	require_once 'config/db_config.php';
 	
-// A QUICK QUERY ON A FAKE USER TABLE
+// A QUICK QUERY ON A TABLE
 	$query = "SELECT * FROM `tbl_projects`";
 	$result = $mysqli->query($query) or die($mysqli->error.__LINE__);
 
